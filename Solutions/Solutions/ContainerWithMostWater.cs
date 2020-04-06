@@ -8,5 +8,9 @@ namespace Solutions
         {
             Console.WriteLine("Hello World!");
         }
+        public int MaxArea(int[] height)
+        {
+            return 0;
+        }
     }
 }
