@@ -31,6 +31,7 @@ namespace Tests
             
             Console.WriteLine(String.Join(", ", arr));
             Assert.AreEqual(1, 1);
+            //Assert.Fail();
         }
         static IEnumerable<object[]> TestMethod1_DataSource()
         {
