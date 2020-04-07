@@ -10,56 +10,36 @@ namespace Solutions
         }
         public int MaxArea(int[] height)
         {
-            int maxArea = 0;
-            int maxAreaLeft = 0;
-            int maxAreaRight = 0;
+            int maxArea = 0, maxAreaLeft = 0, maxAreaRight = 0;
+            int localArea;
 
-            int localArea = 0;
-            int delta = -1;
-
-            int r = 0;
+            int r = height.Length - 1;
             int l = 0;
 
 
             // Walk through the array
-            for(int i = 0; i < height.Length; i++)
+            while (l < r)
             {
-
-
-
-                // Look for the furthest higher height on the right 
-                r = height.Length - 1;
-                l = i;
-                while (height[r] < height[l] && --r > l) { }
-
-
-                localArea = (height[r] > height[l] ? height[l] : height[r]) * (r - l);
-                if (r > l && localArea > maxArea) {
-                    maxAreaLeft = l;
-                    maxAreaRight = r;
-                    maxArea = localArea;
+                if(l < r)
+                {
+                    l++;
+                }
+                else
+                {
+                    r--;
                 }
 
 
-
-
-                // Look for the furthest higher height on the right 
-                r = i;
-                l = 0;
-                while (height[l] < height[r] && r > ++l) { }
-
-
                 localArea = (height[r] > height[l] ? height[l] : height[r]) * (r - l);
-                if (r > l && localArea > maxArea)
+                if (localArea > maxArea)
                 {
                     maxAreaLeft = l;
                     maxAreaRight = r;
                     maxArea = localArea;
                 }
-
-
-
             }
+
+            Console.WriteLine($"Found MaxArea {maxArea} between indexes '{maxAreaLeft}' and '{maxAreaRight}'");
             return maxArea;
         }
     }
