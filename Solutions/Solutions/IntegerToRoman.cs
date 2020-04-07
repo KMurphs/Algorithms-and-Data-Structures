@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 // https://docs.microsoft.com/en-us/visualstudio/test/getting-started-with-unit-testing?view=vs-2019
 // https://leetcode.com/problems/container-with-most-water/solution/
@@ -19,44 +20,27 @@ namespace Solutions
             Console.WriteLine("Hello World!");
         }
         public static string IntToRoman(int num)
+
         {
-            if (num == 0) { return ""; }
+            int[] values = new int[] { 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000 };
+            string[] words = new string[] { "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M" };
+            System.Text.StringBuilder st = new StringBuilder();
+            int count = 0;
 
-
-            // Search for the closest level below num, and the substractor if needed
-            int level = levels.Length - 1;
-            int substractor = levels.Length - 3;
-            bool toggler = false;
-
-
-            while (num < levels[level] - levels[substractor])
+            for (int i = values.Length - 1; i >= 0 && num > 0; i--)
             {
-                level--;
+                count = num / values[i];
+                if (count == 0) { continue; }
 
-                if (toggler)
+                while (count > 0)
                 {
-                    substractor -= 2;
-                    if (substractor < 0) { substractor = 0; }
+                    st.Append(words[i]);
+                    count--;
                 }
-                toggler = !toggler;
+                num = num % values[i];
             }
 
-
-
-            if (num < levels[level])
-            {
-                num = num - (levels[level] - levels[substractor]);
-                return romans[substractor] + romans[level] + IntToRoman(num);
-            }
-            else
-            {
-                num = num - levels[level];
-                return romans[level] + IntToRoman(num);
-            }
-
-
-
-            // return "";
+            return st.ToString();
         }
     }
 }
