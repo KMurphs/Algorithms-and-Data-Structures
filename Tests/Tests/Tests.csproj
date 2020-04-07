@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -14,10 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Solutions\Solutions\Solutions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Done\" />
   </ItemGroup>
 
 </Project>
