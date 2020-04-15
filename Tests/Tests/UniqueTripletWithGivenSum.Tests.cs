@@ -32,7 +32,7 @@ namespace Tests
         [TestCaseSource(nameof(TestMethod1_DataSource))]
         public void TestMethod1(int[] num, List<List<int>> exp)
         {
-            IList<IList<int>> res = UniqueTripletWithGivenSum.FindUniqueTripletWithGivenSum(ref num);
+            IList<IList<int>> res = UniqueTripletWithGivenSum.FindUniqueTripletWithGivenSum(num);
             //string res = IntegerToRoman.Convert(2000);
             //Console.WriteLine($"{res} - {exp}");
             //Console.WriteLine(String.Join(", ", res));

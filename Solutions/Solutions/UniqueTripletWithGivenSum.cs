@@ -20,33 +20,34 @@ namespace Solutions
         {
             Console.WriteLine("Hello World!");
         }
-        public static IList<IList<int>> FindUniqueTripletWithGivenSum(ref int[] nums)
+        public static IList<IList<int>> FindUniqueTripletWithGivenSum(int[] nums)
         {
-            IList<IList<int>> res = new List<IList<int>>();
 
+            IList<IList<int>> res = new List<IList<int>>();
             int sum = 0;
-            int target;
-            int l, r;
+
 
             Array.Sort(nums);
-            for(int i = 0; i < nums.Length - 2; i++)
+            for (int i = 0; i < nums.Length - 2 && nums[i] <= sum; i++)
             {
+                int target;
+                int l, r;
+
                 target = sum - nums[i];
                 l = i + 1;
                 r = nums.Length - 1;
                 while (l < r)
                 {
-                    if(nums[l] + nums[r] > target) { r--; }
-                    else if(nums[l] + nums[r] < target) { l++; }
+                    if (nums[l] + nums[r] > target) { r--; }
+                    else if (nums[l] + nums[r] < target) { l++; }
                     else
                     {
                         res.Add(new List<int>() { nums[i], nums[l], nums[r] });
                         l++;
-                        while (nums[l] == nums[l - 1]) { l++; }
+                        while (l < nums.Length && nums[l] == nums[l - 1]) { l++; }
                     }
                 }
-                i++;
-                while (nums[i] == nums[i - 1]) { i++; }
+                while (i < nums.Length - 1 && nums[i + 1] == nums[i]) { i++; }
             }
 
 
