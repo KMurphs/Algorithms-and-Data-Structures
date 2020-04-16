@@ -17,51 +17,21 @@ namespace LeetCode
     public class Solution
     {
 
-        public static ListNode ExecuteWith(ListNode head, int n)
+        public static IList<string> ExecuteWith(int n)
         {
-            ListNode ptrReckon, ptrDelete;
+            List<string> l = new List<string>();
+            GenerateWithRecursion(ref l, "", n, 0);
+            return l;
+        }
 
-            // First node is at 1, we are stopping at node n
-            int index = 1;
-            ptrReckon = head;
-            while (index < n)
-            {
-                if (ptrReckon.next != null)
-                {
-                    index++;
-                    ptrReckon = ptrReckon.next;
-                }
-            }
-
-
-            // let's move to node n + 1 so that deleter can sit one behind the node to be deleted
-            if (ptrReckon.next != null)
-            {
-                ptrReckon = ptrReckon.next;
-                ptrDelete = head;
-            }
+        public static void GenerateWithRecursion(ref List<string> list, string str, int remaining, int opened)
+        {
+            if (remaining == 0 && opened == 0) { list.Add(str); }
             else
             {
-                // We can't move to node n + 1
-                // Current list only has n nodes
-                // The first one must be removed
-                return head.next;
+                if (remaining > 0) { GenerateWithRecursion(ref list, str + "(", remaining - 1, opened + 1); }
+                if (opened > 0) { GenerateWithRecursion(ref list, str + ")", remaining, opened - 1); }
             }
-
-
-            // Traversing the list n+1 nodes apart
-            while (ptrReckon.next != null)
-            {
-                ptrReckon = ptrReckon.next;
-                ptrDelete = ptrDelete.next;
-            }
-
-
-            // Deleting
-            ptrDelete.next = ptrDelete.next.next;
-
-
-            return head;
         }
     }
 
