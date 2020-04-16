@@ -7,29 +7,65 @@ using System.Text;
 
 namespace LeetCode
 {
+
+    public class ListNode
+    {
+        public int val;
+        public ListNode next;
+        public ListNode(int x) { val = x; }
+    }
     public class Solution
     {
-        public static string ExecuteWith(int num)
+
+        public static ListNode ExecuteWith(ListNode head, int n)
         {
-            int[] values = new int[] { 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000 };
-            string[] words = new string[] { "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M" };
-            System.Text.StringBuilder st = new StringBuilder();
-            int count = 0;
+            ListNode ptrReckon, ptrDelete;
 
-            for (int i = values.Length - 1; i >= 0 && num > 0; i--)
+            // First node is at 1, we are stopping at node n
+            int index = 1;
+            ptrReckon = head;
+            while (index < n)
             {
-                count = num / values[i];
-                if (count == 0) { continue; }
-
-                while (count > 0)
+                if (ptrReckon.next != null)
                 {
-                    st.Append(words[i]);
-                    count--;
+                    index++;
+                    ptrReckon = ptrReckon.next;
                 }
-                num = num % values[i];
             }
 
-            return st.ToString();
+
+            // let's move to node n + 1 so that deleter can sit one behind the node to be deleted
+            if (ptrReckon.next != null)
+            {
+                ptrReckon = ptrReckon.next;
+                ptrDelete = head;
+            }
+            else
+            {
+                // We can't move to node n + 1
+                // Current list only has n nodes
+                // The first one must be removed
+                return head.next;
+            }
+
+
+            // Traversing the list n+1 nodes apart
+            while (ptrReckon.next != null)
+            {
+                ptrReckon = ptrReckon.next;
+                ptrDelete = ptrDelete.next;
+            }
+
+
+            // Deleting
+            ptrDelete.next = ptrDelete.next.next;
+
+
+            return head;
         }
     }
+
+
+
+
 }
