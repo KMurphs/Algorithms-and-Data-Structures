@@ -4,7 +4,7 @@ using System.Text;
 using System.Linq;
 
 // https://docs.microsoft.com/en-us/visualstudio/test/getting-started-with-unit-testing?view=vs-2019
-// https://leetcode.com/problems/longest-palindromic-substring/
+// https://leetcode.com/problems/zigzag-conversion/
 
 namespace LeetCode
 {
@@ -18,82 +18,60 @@ namespace LeetCode
     public class Solution
     {
 
-        public static string ExecuteWith(string s)
+        public static string ExecuteWith(string s, int numRows)
         {
-            if (s.Length < 2)
+            int n = s.Length;
+            char[] s_zigzag = new char[n];
+
+
+            /// Solution is built around the goal of doing one pass
+            /// and therefore completely determining the coordinate of
+            /// the final poisition of the curretn char in the final string
+            /// as a function of the coordinate x and y in the zigzag
+
+            int mod = Math.Max(numRows + numRows - 2, 1); // Length of a zizag cycle
+            int cycles = (int)Math.Floor((double)n / mod); // number of zigzag cycles in current string 
+
+
+
+            int pos;
+            int index = 0;
+            int[] y_arr;
+
+
+            // y coordinate - rows
+            for (int y = 0; y < numRows; y++)
             {
-                return s;
+                // in each cycle, we have 2 points per row
+                y_arr = new int[] { y, mod - y };
+                // Except for coordinate 0 and last row - only 1 point
+                if (y == 0 || y == numRows - 1)
+                {
+                    y_arr = new int[] { y };
+                }
+
+
+                // x coordinate - cols
+                for (int x = 0; x <= cycles; x++)
+                {
+
+                    foreach (int tmp_y in y_arr)
+                    {
+                        // Extracting curr char as function of coordinates
+                        pos = x * mod + tmp_y;
+                        if (pos < n)
+                        {
+                            // Storing current char in its final position
+                            // Setup index for next char
+                            s_zigzag[index++] = s[pos];
+                        }
+                    }
+                }
             }
 
 
-            string maxPal = s.Substring(0, 1);
-            int ptrLeft, ptrRight, ptrLength;
 
-
-            // Iterate through each char in the input string
-            // There are 2 kinds of palyndromic substring: Those with even lengths, and htose with odd lengths
-            for (int runningIndex = 0; runningIndex < s.Length; runningIndex++)
-            {
-
-
-                // Looking for palyndromes with odd length
-                ptrLeft = runningIndex;
-                ptrRight = runningIndex;
-                // Expanding current solution as far as possible
-                while (ptrLeft >= 0 && ptrRight <= s.Length - 1 && s[ptrLeft] == s[ptrRight])
-                {
-                    ptrLeft--;
-                    ptrRight++;
-                }
-                ptrLeft++;
-                ptrRight--;
-                ptrLength = ptrRight - ptrLeft + 1;
-                // Comparing with max solution
-                if (s[ptrLeft] == s[ptrRight] && ptrLength > maxPal.Length)
-                {
-                    maxPal = s.Substring(ptrLeft, ptrLength);
-                }
-
-
-
-
-
-
-
-                // Doing the exact same thing, but setup for palyndroms with even length
-                ptrLeft = runningIndex;
-                ptrRight = runningIndex + 1;
-                if (ptrRight > s.Length - 1)
-                {
-                    // Boundary consideration
-                    continue;
-                }
-                if (s[ptrLeft] != s[ptrRight])
-                {
-                    // Ensure we have a palyndrom
-                    continue;
-                }
-                // Expanding current solution as far as possible
-                while (ptrLeft >= 0 && ptrRight <= s.Length - 1 && s[ptrLeft] == s[ptrRight])
-                {
-                    ptrLeft--;
-                    ptrRight++;
-                }
-                ptrLeft++;
-                ptrRight--;
-                ptrLength = ptrRight - ptrLeft + 1;
-                // Comparing with max solution
-                if (s[ptrLeft] == s[ptrRight] && ptrLength > maxPal.Length)
-                {
-                    maxPal = s.Substring(ptrLeft, ptrLength);
-                }
-
-
-
-
-            }
-
-            return maxPal;
+            return new string(s_zigzag);
         }
     }
 
