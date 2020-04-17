@@ -22,19 +22,12 @@ namespace LeetCodeTests
 
         [Test]
         [TestCaseSource(nameof(TestMethod1_DataSource))]
-        public void TestMethod1(List<int> input, List<int> exp)
+        public void TestMethod1(int dividend, int divisor, int exp)
         {
 
-            var res = Solution.ExecuteWith(ListToListNode(input));
+            var res = Solution.ExecuteWith(dividend, divisor);
 
-
-            ListNode resRunner = res, expRunner = ListToListNode(exp);
-            while(resRunner != null && expRunner != null)
-            {
-                Assert.AreEqual(resRunner.val, expRunner.val);
-                resRunner = resRunner.next;
-                expRunner = expRunner.next;
-            }
+            Assert.AreEqual(res, exp);
 
 
             //Assert.AreEqual(res, exp);
@@ -43,23 +36,10 @@ namespace LeetCodeTests
         static IEnumerable<object[]> TestMethod1_DataSource()
         {
             return new[] {
-                new object[] { new List<int>() { 1, 2, 3, 4 }, new List<int>() { 2, 1, 4, 3 } },
+                new object[] { 10, 3, 3 },
+                new object[] { 7, -3, -2 },
+                new object[] { 102, 5, 20 },
             };
-        }
-
-        public static ListNode ListToListNode(List<int> input)
-        {
-            ListNode head, runner;
-
-            head = new ListNode(input[0]);
-            runner = head;
-            for(int i = 1; i < input.Count; i++)
-            {
-                runner.next = new ListNode(input[i]);
-                runner = runner.next;
-            }
-
-            return head;
         }
 
     }
