@@ -18,88 +18,46 @@ namespace LeetCode
     public class Solution
     {
 
-        public static int ExecuteWith(int dividend, int divisor)
+        public static ListNode ExecuteWith(ListNode l1, ListNode l2)
         {
-            int log10 = 0, max_log10 = 9;
-            int max_divided_by_10 = 214748364;
-            int q = 0;
+            ListNode res = new ListNode(0);
+            ListNode i = l1;
+            ListNode j = l2;
+            ListNode k = res;
+            int carry = 0;
 
-
-
-
-            // Removing the sign complexitiies
-            bool isNeg = (dividend < 0) ^ (divisor < 0);
-            int num = dividend < 0 ? 0 - dividend : dividend;
-            int den = divisor < 0 ? 0 - divisor : divisor;
-
-
-
-            // Optimization and more complexities removing
-            if (divisor == dividend) { return 1; }
-            else if (dividend == Int32.MinValue && divisor == Int32.MaxValue) { return -1; }
-            else if (dividend == Int32.MaxValue && divisor == Int32.MinValue) { return 0; }
-            else if (divisor == Int32.MinValue || divisor == Int32.MaxValue) { return 0; }
-            else if (dividend == Int32.MinValue)
+            while (i != null || j != null)
             {
-                num = Int32.MaxValue;
-                if (divisor == 1)
+                // Ensure that we always have a valid integer to play with
+                int ival = i == null ? 0 : i.val;
+                int jval = j == null ? 0 : j.val;
+
+
+                // Add from l1 l2 and value in current node of res - put in current node of res
+                // The handle carry in current node of res
+                k.val = ival + jval + k.val;
+                carry = 0;
+                if (k.val > 9)
                 {
-                    return Int32.MinValue;
+                    carry = (int)(k.val / 10);
+                    k.val = k.val % 10;
                 }
-                else if (divisor == -1)
+
+                // Prepare runner variables for next cycle
+                i = i == null ? i : i.next; // if null, pass null to next cycle
+                j = j == null ? j : j.next;
+
+
+                // if addition will continue to the next cycle, prepare next node of res
+                // and put in the current carry
+                if (i != null || j != null || carry != 0)
                 {
-                    return Int32.MaxValue;
+                    k.next = new ListNode(carry);
+                    k = k.next;
                 }
             }
 
-
-
-
-
-            int[] dens = Enumerable.Repeat<int>(0, max_log10).ToArray();
-            int[] facts = Enumerable.Repeat<int>(0, max_log10).ToArray();
-            dens[0] = den; // Save the (positive) divisor to the dens array
-            facts[0] = 1; 
-            log10 = 1;
-
-            // (den << 3 + den << 1) is the same as 10*den
-            // We are looking for how any times must divisor be multiplied by 10 before outgrowing num 
-            while ((den << 3) + (den << 1) < num) {         // Foreseeing Multiplication of divisor by 10
-                if (den > max_divided_by_10) { break; };    // There is a divisor that will cause overflow
-                den = (den << 3) + (den << 1);              // Saving multiplication of divisor by 10    
-                dens[log10] = den;                     
-                
-                // Everytime you remove den * 10^x from dividend, the quotient increment by 10^x
-                facts[log10] = (facts[log10 - 1] << 3) + (facts[log10 - 1] << 1);  // quotient of current den / divisor, ie a power of 10
-                
-                log10++; 
-                if (log10 == max_log10) { break; }          // We shouldn't go over the max power of 10 for any int32 
-            }
-
-
-
-
-
-
-
-
-            // Doing the division
-            for (int i = max_log10 - 1; i >= 0; i--)
-            {
-                den = dens[i];
-                if (den == 0) { continue; }
-                // Remove greatest power of 10 * divisor, update quotient to match that
-                while (num >= den) { num = num - den; q = q + facts[i]; } 
-            }
-
-            // Edge case when dividend is minimum int32 value (negative)
-            if (dividend == Int32.MinValue && divisor > 0 && ++num >= den)
-            {
-                q++;
-            }
-
-            // Return quotient with sign
-            return isNeg ? 0 - q : q;
+            return res;
         }
     }
 
