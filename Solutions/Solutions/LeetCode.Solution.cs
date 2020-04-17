@@ -17,21 +17,55 @@ namespace LeetCode
     public class Solution
     {
 
-        public static IList<string> ExecuteWith(int n)
+        public static ListNode ExecuteWith(ListNode head)
         {
-            List<string> l = new List<string>();
-            GenerateWithRecursion(ref l, "", n, 0);
-            return l;
-        }
+            ListNode newHead;
 
-        public static void GenerateWithRecursion(ref List<string> list, string str, int remaining, int opened)
-        {
-            if (remaining == 0 && opened == 0) { list.Add(str); }
-            else
+            if (head == null) { return head; }
+
+
+
+            // If we have more than 1 node in list, set return object's head to second
+            // If we don't, return list intact
+            if (head.next != null)
             {
-                if (remaining > 0) { GenerateWithRecursion(ref list, str + "(", remaining - 1, opened + 1); }
-                if (opened > 0) { GenerateWithRecursion(ref list, str + ")", remaining, opened - 1); }
+                newHead = head.next;
             }
+            else return head;
+
+
+
+
+            // Use a tmp data strcuture to ease the work
+            // Initialize runner, temp structure and index
+            List<ListNode> tmp = new List<ListNode>();
+            ListNode runner = head;
+            int i = -1;
+            while (runner != null)
+            {
+
+                // Indexing nodes and matching the index counter
+                i++;
+                tmp.Add(runner);
+
+                // Saving the next point. Other wose the swapping may loose the connection
+                runner = runner.next;
+
+                // Do the swapping every odd index
+                if (i % 2 == 1)
+                {
+                    // Currently there are 2 nodes between the current node and the last one
+                    if (i - 3 >= 0) tmp[i - 3].next = tmp[i];
+                    // The backward connection
+                    tmp[i].next = tmp[i - 1];
+                    // This is a temporary connection. Final one should point to runner.next
+                    tmp[i - 1].next = runner;
+                }
+
+            }
+
+
+            return newHead;
         }
     }
 
