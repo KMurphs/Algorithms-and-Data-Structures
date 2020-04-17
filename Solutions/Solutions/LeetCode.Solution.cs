@@ -48,7 +48,7 @@ namespace LeetCode
                 i++;
                 tmp.Add(runner);
 
-                // Saving the next point. Other wose the swapping may loose the connection
+                // Saving the next point. Otherwise the swapping may loose the connection
                 runner = runner.next;
 
                 // Do the swapping every odd index
