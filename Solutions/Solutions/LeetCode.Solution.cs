@@ -75,13 +75,17 @@ namespace LeetCode
                 // add current digit
                 tmp2 = tmp + (curr - 48);
 
-                // check that there was no overflow
+                // check that there was no overflow (during the multiplication, then during the subsequent addition)
                 if (num > maxPreMultiplicationBy10 || tmp >> 31 != tmp2 >> 31) // Overflow on operatio over signed numbers
                 {
-                    // there is an overflow on x+y=z iif (msb of x != msb of z) or (msb of x != msb of z)
-                    // https://stackoverflow.com/questions/10078778/bitwise-overflow-checking-in-c
+
                     // there is an overflow on x*y=z if x > max/10 or y > max/10
                     // https://stackoverflow.com/questions/1815367/catch-and-compute-overflow-during-multiplication-of-two-large-integers
+
+
+                    // there is an overflow on x+y=z iif (msb of x != msb of z) or (msb of x != msb of z)
+                    // https://stackoverflow.com/questions/10078778/bitwise-overflow-checking-in-c
+
 
                     // if there was an overflow, go to max integer
                     num = Int32.MaxValue;
