@@ -35,6 +35,8 @@ namespace LeetCodeTests
         {
             return new[] {
                 new object[] { "abcabcbb", 3 },
+                new object[] { "bbbbb", 1 },
+                new object[] { "pwwkew", 3 },
             };
         }
 
