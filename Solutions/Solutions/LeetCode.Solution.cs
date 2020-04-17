@@ -4,7 +4,7 @@ using System.Text;
 using System.Linq;
 
 // https://docs.microsoft.com/en-us/visualstudio/test/getting-started-with-unit-testing?view=vs-2019
-// https://leetcode.com/problems/add-two-numbers/
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
 namespace LeetCode
 {
@@ -18,48 +18,35 @@ namespace LeetCode
     public class Solution
     {
 
-        public static ListNode ExecuteWith(ListNode l1, ListNode l2)
+        public static int ExecuteWith(string s)
         {
-            ListNode res = new ListNode(0);
-            ListNode i = l1;
-            ListNode j = l2;
-            ListNode k = res;
-            int carry;
+            int ASCIISIZE = 128;
+            int[] asciiarray = Enumerable.Repeat(-1, ASCIISIZE).ToArray<int>(); //maps a char to the index of the last time we met it
+            int maxLength = 0, strLength = s.Length, nextIndex, start, prevIndex, currChar;
 
-            while (i != null || j != null)
+
+            // Iterate through string chars
+            // Start is the start of a substring - updated everytime we encounter a char that we already met
+            for (nextIndex = 0, start = 0; nextIndex < strLength; nextIndex++)
             {
-                // Ensure that we always have a valid integer to play with
-                int ival = i == null ? 0 : i.val;
-                int jval = j == null ? 0 : j.val;
+                currChar = (int)s[nextIndex];
+                prevIndex = asciiarray[currChar];
 
-
-                // Add from l1 l2 and value in current node of res - put in current node of res
-                // The handle carry in current node of res
-                k.val = ival + jval + k.val;
-                carry = 0;
-                if (k.val > 9)
+                // We found a repeating char
+                // Compute substring length up until this point
+                // Compare its length to maxLength
+                if (prevIndex >= 0 && start < prevIndex + 1)
                 {
-                    carry = (int)(k.val / 10);
-                    k.val = k.val % 10;
+                    maxLength = maxLength >= nextIndex - start ? maxLength : nextIndex - start;
+                    start = prevIndex + 1;
                 }
 
-
-                // Prepare runner variables for next cycle
-                i = i == null ? i : i.next; // if null, pass null to next cycle
-                j = j == null ? j : j.next;
-
-
-
-                // if addition will continue to the next cycle, prepare next node of res
-                // and put in the current carry
-                if (i != null || j != null || carry != 0)
-                {
-                    k.next = new ListNode(carry);
-                    k = k.next;
-                }
+                // Mark the current char as already been met
+                asciiarray[currChar] = nextIndex;
             }
 
-            return res;
+
+            return maxLength >= nextIndex - start ? maxLength : nextIndex - start;
         }
     }
 
