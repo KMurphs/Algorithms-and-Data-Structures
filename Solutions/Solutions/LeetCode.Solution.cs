@@ -4,7 +4,7 @@ using System.Text;
 using System.Linq;
 
 // https://docs.microsoft.com/en-us/visualstudio/test/getting-started-with-unit-testing?view=vs-2019
-// https://leetcode.com/problems/longest-substring-without-repeating-characters/
+// https://leetcode.com/problems/longest-palindromic-substring/
 
 namespace LeetCode
 {
@@ -18,35 +18,82 @@ namespace LeetCode
     public class Solution
     {
 
-        public static int ExecuteWith(string s)
+        public static string ExecuteWith(string s)
         {
-            int ASCIISIZE = 128;
-            int[] asciiarray = Enumerable.Repeat(-1, ASCIISIZE).ToArray<int>(); //maps a char to the index of the last time we met it
-            int maxLength = 0, strLength = s.Length, nextIndex, start, prevIndex, currChar;
-
-
-            // Iterate through string chars
-            // Start is the start of a substring - updated everytime we encounter a char that we already met
-            for (nextIndex = 0, start = 0; nextIndex < strLength; nextIndex++)
+            if (s.Length < 2)
             {
-                currChar = (int)s[nextIndex];
-                prevIndex = asciiarray[currChar];
-
-                // We found a repeating char
-                // Compute substring length up until this point
-                // Compare its length to maxLength
-                if (prevIndex >= 0 && start < prevIndex + 1)
-                {
-                    maxLength = maxLength >= nextIndex - start ? maxLength : nextIndex - start;
-                    start = prevIndex + 1;
-                }
-
-                // Mark the current char as already been met
-                asciiarray[currChar] = nextIndex;
+                return s;
             }
 
 
-            return maxLength >= nextIndex - start ? maxLength : nextIndex - start;
+            string maxPal = s.Substring(0, 1);
+            int ptrLeft, ptrRight, ptrLength;
+
+
+            // Iterate through each char in the input string
+            // There are 2 kinds of palyndromic substring: Those with even lengths, and htose with odd lengths
+            for (int runningIndex = 0; runningIndex < s.Length; runningIndex++)
+            {
+
+
+                // Looking for palyndromes with odd length
+                ptrLeft = runningIndex;
+                ptrRight = runningIndex;
+                // Expanding current solution as far as possible
+                while (ptrLeft >= 0 && ptrRight <= s.Length - 1 && s[ptrLeft] == s[ptrRight])
+                {
+                    ptrLeft--;
+                    ptrRight++;
+                }
+                ptrLeft++;
+                ptrRight--;
+                ptrLength = ptrRight - ptrLeft + 1;
+                // Comparing with max solution
+                if (s[ptrLeft] == s[ptrRight] && ptrLength > maxPal.Length)
+                {
+                    maxPal = s.Substring(ptrLeft, ptrLength);
+                }
+
+
+
+
+
+
+
+                // Doing the exact same thing, but setup for palyndroms with even length
+                ptrLeft = runningIndex;
+                ptrRight = runningIndex + 1;
+                if (ptrRight > s.Length - 1)
+                {
+                    // Boundary consideration
+                    continue;
+                }
+                if (s[ptrLeft] != s[ptrRight])
+                {
+                    // Ensure we have a palyndrom
+                    continue;
+                }
+                // Expanding current solution as far as possible
+                while (ptrLeft >= 0 && ptrRight <= s.Length - 1 && s[ptrLeft] == s[ptrRight])
+                {
+                    ptrLeft--;
+                    ptrRight++;
+                }
+                ptrLeft++;
+                ptrRight--;
+                ptrLength = ptrRight - ptrLeft + 1;
+                // Comparing with max solution
+                if (s[ptrLeft] == s[ptrRight] && ptrLength > maxPal.Length)
+                {
+                    maxPal = s.Substring(ptrLeft, ptrLength);
+                }
+
+
+
+
+            }
+
+            return maxPal;
         }
     }
 

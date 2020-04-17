@@ -22,7 +22,7 @@ namespace LeetCodeTests
 
         [Test]
         [TestCaseSource(nameof(TestMethod1_DataSource))]
-        public void TestMethod1(string input, int exp)
+        public void TestMethod1(string input, string exp)
         {
 
             var res = Solution.ExecuteWith(input);
@@ -34,9 +34,8 @@ namespace LeetCodeTests
         static IEnumerable<object[]> TestMethod1_DataSource()
         {
             return new[] {
-                new object[] { "abcabcbb", 3 },
-                new object[] { "bbbbb", 1 },
-                new object[] { "pwwkew", 3 },
+                new object[] { "babad", "bab" },
+                new object[] { "cbbd", "bb" },
             };
         }
 
