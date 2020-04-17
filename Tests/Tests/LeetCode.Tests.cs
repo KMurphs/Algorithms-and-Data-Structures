@@ -22,23 +22,25 @@ namespace LeetCodeTests
 
         [Test]
         [TestCaseSource(nameof(TestMethod1_DataSource))]
-        public void TestMethod1(string input, int exp)
+        public void TestMethod1(int[] res, int[] exp)
         {
 
-            var res = Solution.ExecuteWith(input);
+            Solution.ExecuteWith(ref res);
+
+            for(int i = 0; i < exp.Length; i++)
+            {
+                Assert.AreEqual(res[i], exp[i]);
+            }
 
 
-            Assert.AreEqual(res, exp);
+            
             //Assert.Fail();
         }
         static IEnumerable<object[]> TestMethod1_DataSource()
         {
             return new[] {
-                new object[] { "42", 42 },
-                new object[] { "-9128347233", -2147483648 },
-                new object[] { "words and 987", 0 },
-                new object[] { "    -42", -42 },
-                new object[] { "4193 with words", 4193 },
+                new object[] { new int[] { 1, 2, 3 }, new int[] { 1, 3, 2 } },
+                new object[] { new int[] { 1, 3, 2 }, new int[] { 2, 1, 3 } },
             };
         }
 
