@@ -24,7 +24,7 @@ namespace LeetCode
             ListNode i = l1;
             ListNode j = l2;
             ListNode k = res;
-            int carry = 0;
+            int carry;
 
             while (i != null || j != null)
             {
@@ -43,9 +43,11 @@ namespace LeetCode
                     k.val = k.val % 10;
                 }
 
+
                 // Prepare runner variables for next cycle
                 i = i == null ? i : i.next; // if null, pass null to next cycle
                 j = j == null ? j : j.next;
+
 
 
                 // if addition will continue to the next cycle, prepare next node of res
