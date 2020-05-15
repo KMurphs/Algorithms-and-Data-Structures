@@ -2,21 +2,8 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build_cpp",
       "type": "shell",
-      "command": "g++",
-      "args": [
-        "-g",
-        "main.cpp"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
-    },
-    {
-      "type": "shell",
-      "label": "g++.exe build active file",
+      "label": "shell: g++.exe build active file",
       "command": "C:\\MinGW\\bin\\g++.exe",
       "args": [
         "-g",
@@ -26,7 +13,11 @@
       ],
       "options": {
         "cwd": "C:\\MinGW\\bin"
-      }
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build"
     }
   ]
 }
