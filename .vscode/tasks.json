@@ -18,6 +18,15 @@
         "$gcc"
       ],
       "group": "build"
+    },
+    {
+      "type": "shell",
+      "label": "shell: g++.exe run compiled file",
+      "command": "",
+      "args": [
+        ".\\${fileDirname}\\${fileBasenameNoExtension}.exe"
+      ],
+      "group": "test"
     }
   ]
 }
