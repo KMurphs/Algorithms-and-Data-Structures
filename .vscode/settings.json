@@ -3,6 +3,8 @@
     "*.py": "python",
     "iostream": "cpp",
     "utility": "cpp",
-    "xtree": "cpp"
+    "xtree": "cpp",
+    "vector": "cpp",
+    "xstring": "cpp"
   }
 }
