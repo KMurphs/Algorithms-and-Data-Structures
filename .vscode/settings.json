@@ -5,6 +5,8 @@
     "utility": "cpp",
     "xtree": "cpp",
     "vector": "cpp",
-    "xstring": "cpp"
+    "xstring": "cpp",
+    "random": "cpp",
+    "ostream": "cpp"
   }
 }
