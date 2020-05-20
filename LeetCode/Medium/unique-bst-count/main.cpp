@@ -81,6 +81,6 @@ int main() {
     assert(res == exp);
     cout << "Tree is " << (res==exp ? "" : " not ") << " A Valid BST" << endl;
 
-
+    cout << "Program is Exiting Successfully" << endl;
     return 0;
 }

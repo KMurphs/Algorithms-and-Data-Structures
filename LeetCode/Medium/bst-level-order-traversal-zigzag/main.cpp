@@ -87,6 +87,6 @@ int main() {
         cout << "ZigZag Results " << (isMatch ? "" : "do not ") << "match expected data" << endl;
     }
 
-
+    cout << "Program is Exiting Successfully" << endl;
     return 0;
 }

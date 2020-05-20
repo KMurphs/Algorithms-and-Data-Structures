@@ -24,28 +24,32 @@ struct TreeNode {
 };
 class Solution {
 public:
-    int numTrees(int n) {
-        vector<int> dp = { 1 };
-        
-        for(int i = 1; i <= n; i++){
-            dp.push_back(0);
-            for(int j = 0; j <= i - 1; j++){
-                dp[i] = dp[i] + dp[j]*dp[i - j - 1];
+    void flatten(TreeNode* root) {
+        TreeNode* curr = root;
+        TreeNode* pre = root;
+        while(curr != nullptr){
+            if(curr->left){
+                
+                pre = curr->left;
+                while(pre->right != nullptr) pre = pre->right;
+                
+                pre->right = curr->right;
+                curr->right = curr->left;
+                curr->left = nullptr;
             }
+            
+            curr = curr->right;
         }
-        
-        return dp[n];
     }
 };
-
+        
 
 int main() {
-    int n = 4;
-    int res = Solution().numTrees(n);
-    int exp = 14;
-    
-    assert(res == exp);
-    cout << "For n = '" << n << "': There are '" << res << "' possible structurally unique BSTs" << endl;
+    TreeNode* root = new TreeNode(10);
+    Solution().flatten(root);
+
+    // bool isMatch = exp.size() == res.size();
+    // cout << "Results " << (isMatch ? "" : "do not ") << "match expected data" << endl;
 
     cout << "Program is Exiting Successfully" << endl;
     return 0;
