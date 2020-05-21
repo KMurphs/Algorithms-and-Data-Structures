@@ -24,31 +24,25 @@ using namespace std;
 
 class Solution {
 public:
-    int sumNumbers(TreeNode* root) {
-        int sum = 0, num = 0;
-        dfs(root, &num, &sum);
-        return sum;
-    }
-    void dfs(TreeNode* root, int* ptrNum, int* ptrSum){
+    int sumNumbers(TreeNode* root, int acc = 0) {
         
         if(root == nullptr){
-            return;
+            return 0;
         }
         
-        int tmp = *ptrNum;
-        *ptrNum = (tmp * 10) + root->val;
-        
+        int newAcc = (acc * 10) + root->val;
+        int newSum = 0;
         
         if(root->left == nullptr && root->right == nullptr){
-            *ptrSum = *ptrSum + *ptrNum;
+            newSum += newAcc;
         }else{
-            dfs(root->left, ptrNum, ptrSum);
-            dfs(root->right, ptrNum, ptrSum);
+            newSum += sumNumbers(root->left, newAcc);
+            newSum += sumNumbers(root->right, newAcc);
         }
         
-        *ptrNum = tmp;
+        return newSum;
+        
     }
-    
 };
         
 
