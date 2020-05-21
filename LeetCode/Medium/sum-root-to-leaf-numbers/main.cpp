@@ -26,29 +26,27 @@ class Solution {
 public:
     int sumNumbers(TreeNode* root) {
         int sum = 0, num = 0;
-        vector<int> path;
         dfs(root, &num, &sum);
         return sum;
     }
     void dfs(TreeNode* root, int* ptrNum, int* ptrSum){
         
-        int tmp = *ptrNum;
         if(root == nullptr){
             return;
         }
         
+        int tmp = *ptrNum;
         *ptrNum = (tmp * 10) + root->val;
+        
         
         if(root->left == nullptr && root->right == nullptr){
             *ptrSum = *ptrSum + *ptrNum;
-            *ptrNum = tmp;
-            return;
+        }else{
+            dfs(root->left, ptrNum, ptrSum);
+            dfs(root->right, ptrNum, ptrSum);
         }
         
-        dfs(root->left, ptrNum, ptrSum);
-        dfs(root->right, ptrNum, ptrSum);
         *ptrNum = tmp;
-        
     }
     
 };
