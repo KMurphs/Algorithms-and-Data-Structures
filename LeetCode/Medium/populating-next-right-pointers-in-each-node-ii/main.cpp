@@ -28,7 +28,7 @@ using namespace std;
 
 class Solution {
 public:
-    Node* connect(Node* root) {
+    Node* connect1(Node* root) {
     
         if(root == nullptr) return root;
         
@@ -42,8 +42,8 @@ public:
             level++;
         }
         
-        connect(root->left);
-        connect(root->right);
+        connect1(root->left);
+        connect1(root->right);
         return root;
     
     }
@@ -61,12 +61,50 @@ public:
         
         return res;
     }
+
+    Node* connect2(Node* root) {
+        
+        if(root == nullptr) return root;
+        
+        Node* dummy = new Node(0);
+        Node* runningParent = root;
+        Node* runningSibling = dummy;
+        
+        bool isCompleted = false;
+    
+        while(!isCompleted){
+            
+            if(runningParent->left){
+                runningSibling->next = runningParent->left;
+                runningSibling = runningSibling->next;
+            }
+            if(runningParent->right){
+                runningSibling->next = runningParent->right;
+                runningSibling = runningSibling->next;
+            }
+            
+            if(runningParent->next == nullptr){
+                
+                isCompleted = runningSibling == dummy;
+                runningParent = dummy->next;
+                runningSibling = dummy;
+                
+            }else{
+                runningParent = runningParent->next;
+            }
+            
+        }
+        
+        return root;
+    }
+
 };
         
 
 int main() {
     Node* root = new Node(10);
-    assert(Solution().connect(root) == root);
+    assert(Solution().connect1(root) == root);
+    assert(Solution().connect2(root) == root);
 
     // cout << "Results " << (isMatch ? "" : "do not ") << "match expected data" << endl;
 
