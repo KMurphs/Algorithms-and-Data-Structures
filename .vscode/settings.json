@@ -9,6 +9,16 @@
     "random": "cpp",
     "ostream": "cpp",
     "future": "cpp",
-    "shared_mutex": "cpp"
+    "shared_mutex": "cpp",
+    "ratio": "cpp",
+    "system_error": "cpp",
+    "array": "cpp",
+    "functional": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "regex": "cpp",
+    "xtr1common": "cpp",
+    "*.tcc": "cpp",
+    "istream": "cpp"
   }
 }
