@@ -25,6 +25,8 @@ void printList(Node *node)
     } 
 }   
 
+
+
 int getNthFromLast(Node *head, int n)
 {
     Node *dummy = new Node(0), *ahead = dummy, *behind = dummy;
@@ -41,6 +43,7 @@ int getNthFromLast(Node *head, int n)
 
     return behind->data;
 }
+
 
 
 // Driver program to test above functions 
