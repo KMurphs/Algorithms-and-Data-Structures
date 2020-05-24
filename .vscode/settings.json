@@ -19,6 +19,8 @@
     "regex": "cpp",
     "xtr1common": "cpp",
     "*.tcc": "cpp",
-    "istream": "cpp"
+    "istream": "cpp",
+    "queue": "cpp",
+    "stack": "cpp"
   }
 }
