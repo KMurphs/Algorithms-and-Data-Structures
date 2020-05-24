@@ -57,6 +57,24 @@ Node* reverse(Node* head) {
 
     return backward;
 }
+Node* reverseRecursive(Node *forward, Node **backward = nullptr) {
+
+    if(backward == nullptr){
+        Node* tmp = nullptr;
+        backward = &tmp;
+    }
+    if(forward == nullptr) {
+        return nullptr;
+    }
+
+    Node *tmp = forward->next;
+    forward->next = (*backward);
+    (*backward) = forward;
+
+    reverseRecursive(tmp, backward);
+
+    return *backward;
+}
 
 
 
@@ -68,9 +86,12 @@ int main()
     Node *root = reverse(
         buildLinkedList({1,2,3,4,5,6,7,8,9})
     ); 
-
-    // Let us print the flatened linked list 
     printList(root); 
+
+
+    root = reverseRecursive(root); 
+    printList(root); 
+
 
     return 0; 
 } 
