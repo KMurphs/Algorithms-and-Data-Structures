@@ -63,9 +63,8 @@ Node* reverseRecursive(Node *forward, Node **backward = nullptr) {
         Node* tmp = nullptr;
         backward = &tmp;
     }
-    if(forward == nullptr) {
-        return nullptr;
-    }
+    if(forward == nullptr) return nullptr;
+
 
     Node *tmp = forward->next;
     forward->next = (*backward);
