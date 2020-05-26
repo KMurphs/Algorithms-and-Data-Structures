@@ -2,6 +2,8 @@
 using namespace std;
 
 
+#define M 3 
+#define N 3 
 
 // A given function to check if a given string is present in 
 // dictionary. The implementation is naive for simplicity. As 
@@ -16,14 +18,14 @@ bool isInDictionary(string dictionary[], string& str)
     return false; 
 } 
 
-void dfsUtil(string dictionary[], char boggle[3][3], vector<string>& sols, bool visited[3][3], int x, int y, vector<char> currChars){
+void dfsUtil(string dictionary[], char boggle[M][N], vector<string>& sols, bool visited[3][3], int x, int y, string currChars){
   
   visited[x][y] = 1;
-  currChars.push_back(boggle[x][y]);
+  currChars = currChars + boggle[x][y];
 
-  string tmp(currChars.begin(), currChars.end());
-  if(isInDictionary(dictionary, tmp)){
-    sols.push_back(tmp);
+
+  if(isInDictionary(dictionary, currChars)){
+    sols.push_back(currChars);
     // return;
   }
 
@@ -31,8 +33,8 @@ void dfsUtil(string dictionary[], char boggle[3][3], vector<string>& sols, bool 
   for(int i = -1; i <= 1; i++)
     for(int j = -1; j <= 1; j++)
       if( 
-        x + i < 3 && x + i >= 0 &&
-        y + j < 3 && y + j >= 0 &&
+        x + i < M && x + i >= 0 &&
+        y + j < N && y + j >= 0 &&
         !visited[x + i][y + j]
       ){
         // currChars.push_back(boggle[x + i][y + j]);
@@ -40,22 +42,20 @@ void dfsUtil(string dictionary[], char boggle[3][3], vector<string>& sols, bool 
         // currChars.pop_back();
       }
 
-  currChars.pop_back();
+  currChars.erase(currChars.length() - 1);
   visited[x][y] = 0;
 }
 
-vector<string> dfs(string dictionary[], char boggle[3][3]){
+vector<string> dfs(string dictionary[], char boggle[M][N]){
   vector<string> words;
-  vector<char> curr;
+  string str = ""; 
 
-  bool visited[3][3];
-  for(int i = 0; i < 3; i++)
-    for(int j = 0; j < 3; j++)
-      visited[i][j] = 0;
+  bool visited[M][N] = { { false } };
+
 
   for(int i = 0; i < 3; i++)
     for(int j = 0; j < 3; j++)
-      dfsUtil(dictionary, boggle, words, visited, i, j, curr);
+      dfsUtil(dictionary, boggle, words, visited, i, j, str);
 
   return words;
 }
