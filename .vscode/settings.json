@@ -21,6 +21,7 @@
     "*.tcc": "cpp",
     "istream": "cpp",
     "queue": "cpp",
-    "stack": "cpp"
+    "stack": "cpp",
+    "numeric": "cpp"
   }
 }
