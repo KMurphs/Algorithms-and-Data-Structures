@@ -53,6 +53,8 @@ int pickLowestUnprocessed(Graph *G, int *dist, int *reg){
 // If you want to initialize your board array of ints, 
 // you'll have to do it with the same kind of a loop that your test program uses to print its contents.
 
+// Use memset if you want to fill block of memory with 0's or set everything to 0xff's
+
 
 // Dijkstra
 int *findMindDistSrcToAll(Graph *G, int src){
