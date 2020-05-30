@@ -21,7 +21,7 @@ int powerModulo(int a, int n, int m){
 //Driver program to test above function 
 int main() 
 { 
-
+	// https://www.geeksforgeeks.org/modular-exponentiation-power-in-modular-arithmetic/
 	assert(powerModulo(3, 4, 7) == 4);
 	assert(powerModulo(2, 10, 2) == 0);
 

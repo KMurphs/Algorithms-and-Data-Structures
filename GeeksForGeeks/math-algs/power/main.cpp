@@ -20,6 +20,7 @@ int power(int x, int n){
 //Driver program to test above function 
 int main() 
 { 
+	// https://www.geeksforgeeks.org/write-an-iterative-olog-y-function-for-powx-y/
 	assert(power(2, 1) == 2);
 	assert(power(3, 4) == 81);
 

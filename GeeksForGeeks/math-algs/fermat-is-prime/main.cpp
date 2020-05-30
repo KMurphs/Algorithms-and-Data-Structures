@@ -46,6 +46,7 @@ bool fermatIsPrime(int p, int retries){
 //Driver program to test above function 
 int main() 
 { 
+	// https://www.geeksforgeeks.org/primality-test-set-2-fermet-method/
 	assert(fermatIsPrime(1, 2) == 1);
 	assert(fermatIsPrime(37, 5) == 1);
 	assert(fermatIsPrime(22, 7) == 0);

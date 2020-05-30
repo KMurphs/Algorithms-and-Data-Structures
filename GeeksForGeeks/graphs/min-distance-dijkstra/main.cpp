@@ -93,6 +93,7 @@ int *findMindDistSrcToAll(Graph *G, int src){
 // Driver program to test above functions 
 int main() 
 { 
+    // https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
     Graph *graph = new Graph(5);
     graph->addEdge(0, 1, 2); 
     graph->addEdge(0, 4, 3); 

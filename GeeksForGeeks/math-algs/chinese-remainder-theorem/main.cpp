@@ -45,7 +45,7 @@ int findNumByChineseRemainder(vector<int> nums, vector<int> rems){
 //Driver program to test above function 
 int main() 
 { 
-	
+	// https://www.geeksforgeeks.org/chinese-remainder-theorem-set-1-introduction/
 	assert(findNumByChineseRemainder({2, 3, 5}, {0, 0, 2}) == 12);
 	assert(findNumByChineseRemainder({7, 5}, {5, 2}) == 12);
 	assert(findNumByChineseRemainder({4, 9}, {0, 3}) == 12);

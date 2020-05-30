@@ -29,6 +29,7 @@ int inverseModulo(int a, int m){
 //Driver program to test above function 
 int main() 
 { 
+	// https://www.geeksforgeeks.org/multiplicative-inverse-under-modulo-m/
 	assert(inverseModulo(11, 2) == 1);
 	assert(inverseModulo(11, 5) == 1);
 	assert(inverseModulo(11, 7) == 2);

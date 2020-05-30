@@ -15,6 +15,7 @@ int gcd(int a, int b){
 //Driver program to test above function 
 int main() 
 { 
+	// https://www.geeksforgeeks.org/euclidean-algorithms-basic-and-extended/
 	assert(gcd(10, 15) == 5);
 	assert(gcd(15, 10) == 5);
 	assert(gcd(15, 1) == 5);

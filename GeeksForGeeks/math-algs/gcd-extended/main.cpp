@@ -17,6 +17,7 @@ int gcdExtended(int a, int b, int *x, int *y){
 //Driver program to test above function 
 int main() 
 { 
+	// https://www.geeksforgeeks.org/euclidean-algorithms-basic-and-extended/
 	int x, y;
 	assert(gcdExtended(10, 15, &x, &y) == 5);
 	assert(gcdExtended(15, 10, &x, &y) == 5);
