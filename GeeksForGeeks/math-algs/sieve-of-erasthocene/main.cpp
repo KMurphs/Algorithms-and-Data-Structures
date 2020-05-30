@@ -35,6 +35,9 @@ int main(){
     cout << primes[i] << " ";
   }
 
+  assert(primes[1 - 1] == 2);
+  assert(primes[10 - 1] == 29);
+
   cout << "\n\nProgram Exited successfully..." << endl;
   return 0;
 }
