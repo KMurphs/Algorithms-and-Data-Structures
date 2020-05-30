@@ -78,7 +78,7 @@ vector<string> dfs(vector<string> dictionary, char boggle[M][N]){
 
 
 int main(){
-    // https://www.geeksforgeeks.org/boggle-find-possible-words-board-characters/
+
     vector<string> dictionary = { "GEEKS", "FOR", "QUIZ", "GO" }; 
     char boggle[3][3]   = {{'G', 'I', 'Z'}, {'U', 'E', 'K'}, {'Q', 'S', 'E'}};
 
