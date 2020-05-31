@@ -15,7 +15,7 @@ int partition(int arr[], int l, int r){
   int pivot = r;
   int pivotVal = arr[r];
 
-  int cache = -1;
+  int cache = l - 1;
 
   for(int i = l; i < r; i++){
     if(arr[i] < pivotVal){
