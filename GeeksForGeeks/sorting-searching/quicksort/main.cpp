@@ -46,6 +46,6 @@ int main(){
   assert(arr[0] == 1);
   assert(arr[SIZE - 1] == 9);
 
-  cout << "Program exited successully..." << endl;
+  cout << "Program exited successfully..." << endl;
   return 0;
 }
