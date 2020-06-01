@@ -22,6 +22,18 @@
     "istream": "cpp",
     "queue": "cpp",
     "stack": "cpp",
-    "numeric": "cpp"
+    "numeric": "cpp",
+    "deque": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "initializer_list": "cpp",
+    "valarray": "cpp",
+    "xhash": "cpp",
+    "xiosbase": "cpp",
+    "xutility": "cpp",
+    "algorithm": "cpp"
   }
 }
