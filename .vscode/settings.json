@@ -36,6 +36,8 @@
     "xutility": "cpp",
     "algorithm": "cpp",
     "cmath": "cpp",
-    "map": "cpp"
+    "map": "cpp",
+    "chrono": "cpp",
+    "limits": "cpp"
   }
 }
