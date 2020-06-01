@@ -12,6 +12,9 @@ struct TreeNode{
 
 bool areTreesIdentical(TreeNode *root1, TreeNode *root2){
   if(root1 == nullptr && root2 == nullptr) return true;
+  // handle case bigger 1->2->3->4 shorter 2->3
+  // if(root1 != nullptr && root2 == nullptr) return true; 
+  // if(root1 == nullptr) return true;
   if(root1 == nullptr || root2 == nullptr) return false;
 
   return root1->value == root2->value && 
@@ -34,8 +37,12 @@ bool doesTreeContainsSubTree(TreeNode *mainRoot, TreeNode *secRoot){
 
 
 
-// https://www.geeksforgeeks.org/check-whether-binary-tree-full-binary-tree-not/
-// A full binary tree is defined as a binary tree in which all nodes have either zero or two child nodes.
+// https://www.geeksforgeeks.org/check-binary-tree-subtree-another-binary-tree-set-2/
+// Alternatively, since inorder and preorder/postorder traversal of a tree uniquely identifies it,
+// We could compute for both trees, inorder and preorder traversal and check whether the traversals
+// of the shorter tree is contained in the main tree. Use "nulls" to address situations where the bigger
+// tree contains the shorter tree but goes beyond the ending point of the shorter tree
+// bigger 1->2->3->4 shorter 2->3
 int main(int argc, char **argv, char **envp){
 
   TreeNode *root1 = new TreeNode('x');
