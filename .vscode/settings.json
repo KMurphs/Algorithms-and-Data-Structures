@@ -34,6 +34,8 @@
     "xhash": "cpp",
     "xiosbase": "cpp",
     "xutility": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "cmath": "cpp",
+    "map": "cpp"
   }
 }
