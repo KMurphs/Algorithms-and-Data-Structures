@@ -15,7 +15,7 @@ int findMinDepth(TreeNode *root){
   return 1 + min(findMinDepth(root->left), findMinDepth(root->right));
 }
 
-
+// https://www.geeksforgeeks.org/find-minimum-depth-of-a-binary-tree/
 int main(int argc, char **argv, char **envp){
 
   TreeNode *root = new TreeNode(1);
