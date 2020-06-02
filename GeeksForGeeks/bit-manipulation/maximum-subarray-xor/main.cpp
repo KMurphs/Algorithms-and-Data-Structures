@@ -64,6 +64,9 @@ TLeafData getMostDifferent(TrieNode *root, int num){
 // and 3 was present in trie (from element 1 to 3), 
 // then resulting xor (from element 4 to 5) would be 7)
 
+// The trie should be initialized with 0, as the most different from the  first 
+// element of the array
+
 // So compute running xor
 // store in trie
 // get most different xor already in trie, runningXor ^ mostDifferent will give max xor 
