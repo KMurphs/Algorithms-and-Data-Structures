@@ -10,8 +10,11 @@ void Swap(char *arr, int l, int r){
 
 char *reverseString(string inStr){
   
+
+  
   char *outStr = new char[inStr.size() + 1];
   strcpy(outStr, inStr.c_str());
+
 
   int l = 0, r = inStr.size() - 1;
 
