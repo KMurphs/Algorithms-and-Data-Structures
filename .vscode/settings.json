@@ -38,6 +38,7 @@
     "cmath": "cpp",
     "map": "cpp",
     "chrono": "cpp",
-    "limits": "cpp"
+    "limits": "cpp",
+    "xlocale": "cpp"
   }
 }
