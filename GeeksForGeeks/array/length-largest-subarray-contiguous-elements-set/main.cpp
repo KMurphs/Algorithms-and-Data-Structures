@@ -4,7 +4,8 @@ using namespace std;
 
 
 
-
+// Not working
+// ... 4, 5, 6, 9, 10, 3 ...
 int longestSubArrayOfContiguous1(int *arr, int arrSize){
 
   // Get min and max value of array
@@ -58,10 +59,16 @@ int longestSubArrayOfContiguous2(int *arr, int arrSize){
   for(l = 0; l < arrSize; l++){
     minIdx = l; 
     maxIdx = l;
+    set<int> dups;
+    dups.insert(arr[l]);
 
 
 
     for(r = l + 1; r < arrSize; r++){
+
+      // If we find a dup, we don't have a contiguous set of element meeting the invariant
+      if(dups.find(arr[r]) != dups.end()) break;
+      dups.insert(arr[r]);
 
       if(arr[minIdx] > arr[r]) minIdx = r;
       if(arr[maxIdx] < arr[r]) maxIdx = r;
@@ -113,15 +120,23 @@ int main(int argc, char **argv, char **envp){
   
 
   arrSize = 3, arr = new int[arrSize]{10, 12, 11}, exp = 3;
-  assert(longestSubArrayOfContiguous1(arr, arrSize) == exp);
+  // assert(longestSubArrayOfContiguous1(arr, arrSize) == exp);
   assert(longestSubArrayOfContiguous2(arr, arrSize) == exp);
 
   arrSize = 4, arr = new int[arrSize]{14, 12, 11, 20}, exp = 2;
-  assert(longestSubArrayOfContiguous1(arr, arrSize) == exp);
+  // assert(longestSubArrayOfContiguous1(arr, arrSize) == exp);
   assert(longestSubArrayOfContiguous2(arr, arrSize) == exp);
 
   arrSize = 10, arr = new int[arrSize]{1, 56, 58, 57, 90, 92, 94, 93, 91, 45}, exp = 5;
-  assert(longestSubArrayOfContiguous1(arr, arrSize) == exp);
+  // assert(longestSubArrayOfContiguous1(arr, arrSize) == exp);
+  assert(longestSubArrayOfContiguous2(arr, arrSize) == exp);
+
+  arrSize = 12, arr = new int[arrSize]{1, 56, 58, 57, 90, 92, 92, 94, 90, 93, 91, 45}, exp = 5;
+  // assert(longestSubArrayOfContiguous1(arr, arrSize) == exp);
+  assert(longestSubArrayOfContiguous2(arr, arrSize) == exp);
+
+  arrSize = 7, arr = new int[arrSize]{10, 12, 12, 10, 10, 11, 10}, exp = 2;
+  // assert(longestSubArrayOfContiguous1(arr, arrSize) == exp);
   assert(longestSubArrayOfContiguous2(arr, arrSize) == exp);
 
   cout << "Program Exited Successfully";
