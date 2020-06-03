@@ -139,6 +139,8 @@ int main(int argc, char **argv, char **envp){
   // assert(longestSubArrayOfContiguous1(arr, arrSize) == exp);
   assert(longestSubArrayOfContiguous2(arr, arrSize) == exp);
 
-  cout << "Program Exited Successfully";
+
+
+  std::cout << "Program Exited Successfully";
   return 0;
 }
