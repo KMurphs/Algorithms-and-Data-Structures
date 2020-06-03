@@ -39,6 +39,7 @@
     "map": "cpp",
     "chrono": "cpp",
     "limits": "cpp",
-    "xlocale": "cpp"
+    "xlocale": "cpp",
+    "bitset": "cpp"
   }
 }
