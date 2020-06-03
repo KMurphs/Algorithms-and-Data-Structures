@@ -35,8 +35,7 @@ bool isTherePythagorianTriplets(int *arr, int arrSize){
 
 
 
-// https://www.geeksforgeeks.org/convert-array-into-zig-zag-fashion/
-// a < b > c < d > e < f
+// https://www.geeksforgeeks.org/find-pythagorean-triplet-in-an-unsorted-array/
 int main(int argc, char **argv, char **envp){
 
   int arrSize, *arr;

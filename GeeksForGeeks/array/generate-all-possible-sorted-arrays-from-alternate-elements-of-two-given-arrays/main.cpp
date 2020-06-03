@@ -62,8 +62,7 @@ vector<vector<int>> generateSortedArrays(int *arrA, int arrASize, int *arrB, int
 
 
 
-// https://www.geeksforgeeks.org/convert-array-into-zig-zag-fashion/
-// a < b > c < d > e < f
+// https://www.geeksforgeeks.org/generate-all-possible-sorted-arrays-from-alternate-elements-of-two-given-arrays/
 int main(int argc, char **argv, char **envp){
 
   
