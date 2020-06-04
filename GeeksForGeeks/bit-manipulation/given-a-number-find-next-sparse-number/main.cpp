@@ -16,7 +16,7 @@ int getNextSparseNumber(int num){
   assert((INT_MIN >> 7) + (1 << (nBits - 7 - 1)) == 0);
   assert((INT_MIN >> 9) + (1 << (nBits - 10)) == 0);
   // Since relations above is true, we can avoid keeping track of setter
-  // if i is not 1: (INT_MIN >> i) + (1 << (nBits - i)) == 0
+  // if i is not 1: (INT_MIN >> i) + (1 << (nBits - i - 1)) == 0
   // so setter = 0 - mask
   mask = INT_MIN >> 1; //setter = 1 << (nBits - 2) or setter = 0 - mask;
   // setter = 1 << (nBits - 2);
