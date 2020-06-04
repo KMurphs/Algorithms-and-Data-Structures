@@ -6,18 +6,15 @@ using namespace std;
 
 int lRotate(unsigned int num, int rotations){
   
-  bool overflow;
+
+  rotations = rotations % (8*sizeof(num)); // optimization. Can only do a max of 31 shifts 5%2=1, -5%2=-1
+  if(rotations < 0) rotations = rotations + (8*sizeof(num)); // less line of code. rotation -1 is rotation +31
 
   while(rotations > 0){
-    overflow = num & (unsigned int)INT_MIN;
-    num = (num << 1) | overflow;
+    num = (num << 1) | (bool)(num & INT_MIN);
     rotations--;
   }
-  while(rotations < 0){
-    overflow = num & 1;
-    num = (num >> 1) | (overflow * INT_MIN);
-    rotations++;
-  }
+
 
   return num;
 }
