@@ -10,43 +10,34 @@ int getNextSparseNumber(int num){
   
   int nBits = 8 * sizeof(num);
   unsigned int pattern_00 = 3, pattern_01 = 11;
-  int mask;//, setter;
-
-  assert(INT_MIN == (1 << (nBits - 1)));
-  assert((INT_MIN >> 7) + (1 << (nBits - 7 - 1)) == 0);
-  assert((INT_MIN >> 9) + (1 << (nBits - 10)) == 0);
-  // Since relations above is true, we can avoid keeping track of setter
-  // if i is not 1: (INT_MIN >> i) + (1 << (nBits - i - 1)) == 0
-  // so setter = 0 - mask
-  mask = INT_MIN >> 1; //setter = 1 << (nBits - 2) or setter = 0 - mask;
-  // setter = 1 << (nBits - 2);
+  int mask = INT_MIN; // INT_MIN = 1000 0000   0000 0000   0000 0000   0000 0000  (-2147483647 - 1)
   
-  
-
   pattern_00 = pattern_00 << (nBits - 4);
   pattern_01 = pattern_01 << (nBits - 4);
-  mask = mask >> 2; //setter = 1 << (nBits - 2) or setter = 0 - mask;
-  //setter = setter >> 2;
+  mask = mask >> 3; 
 
+  // Edge cases
   if((num & (pattern_00 << 2)) == (pattern_00 << 2)) return 0;
   if((num & (pattern_00 << 1)) == (pattern_00 << 1)) return INT_MIN;
 
-
-
+  // Algorithm: Looking for portion of num that matches pattern ....11....
   while((pattern_00 != 0) && ((num & pattern_00) != pattern_00)){ 
     pattern_00 = pattern_00 >> 1;
     pattern_01 = pattern_01 >> 1;
     mask = mask >> 1;
-    //setter = setter >> 1;
   }
 
+  // We have found a mathc
   if((num & pattern_00) == pattern_00){
 
-    mask = mask << 2;//, setter = setter << 2;
-    if((num & pattern_01) == pattern_01) mask = mask << 2;//, setter = setter << 2;
+    // if num also matches ....X1011.... (we also know the X can only be a 0)
+    // we needs to kill everything below the X, other wise kill everything strating by 11 going down
+    mask = mask << ((num & pattern_01) == pattern_01) ? 4 : 2; // Adjust mask to start above match
 
-    num = num & mask;
-    num = num | (0 - mask); // if mask is '1110 0000' then (0 - mask) is '0010 0000'
+    // Mutate num into next sparse number
+    num = num & mask;       // kill everything starting at the match and going to lsb
+    num = num | (0 - mask); // Set bit: if mask is '1110 0000' then (0 - mask) is '0010 0000'
+
   }
 
   return num;
