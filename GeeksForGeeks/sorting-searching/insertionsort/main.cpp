@@ -11,16 +11,12 @@ void Swap(int arr[], int l, int r){
 
 
 
-void insertionsort(int arr[], int arrSize){
+void bubblesort(int arr[], int arrSize){
 
-  for(int i = 1 ; i < arrSize ; i++){
-    int j = i - 1, currVal = arr[j + 1];
-    while(j >= 0 && arr[j] > currVal){
-      arr[j + 1] = arr[j];
-      j--;
-    }
-    arr[j + 1] = currVal;
-  }
+  for(int i = 0 ; i <= arrSize - 2 ; i++)
+    for(int j = 0 ; j <= arrSize - 2 - i ; j++)
+      if(arr[j] > arr[j + 1])
+        Swap(arr, j , j + 1);
 
 }
 
@@ -32,7 +28,7 @@ int main(){
   int arrSize, *arr;
 
   arrSize = 9, arr = new int[arrSize]{2, 3, 5, 6, 8, 7, 4, 1, 9};
-  insertionsort(arr, arrSize);
+  bubblesort(arr, arrSize);
   for(int i = 1 ; i < arrSize ; i++)
     assert(arr[i - 1] <= arr[i]);
 
@@ -43,18 +39,18 @@ int main(){
 
 
   arrSize = 9, arr = new int[arrSize]{2, 3, 5, 6, 9, 7, 4, 1, 8};
-  insertionsort(arr, arrSize);
+  bubblesort(arr, arrSize);
   for(int i = 1 ; i < arrSize ; i++)
     assert(arr[i - 1] <= arr[i]);
 
 
   arrSize = 9, arr = new int[arrSize]{9, 8, 7, 6, 5, 4, 3, 2, 1};
-  insertionsort(arr, arrSize);
+  bubblesort(arr, arrSize);
   for(int i = 1 ; i < arrSize ; i++)
     assert(arr[i - 1] <= arr[i]);
 
   arrSize = 9, arr = new int[arrSize]{1, 2, 3, 4, 5, 6, 7, 8, 9};
-  insertionsort(arr, arrSize);
+  bubblesort(arr, arrSize);
   for(int i = 1 ; i < arrSize ; i++)
     assert(arr[i - 1] <= arr[i]);
 
