@@ -3,35 +3,28 @@
 using namespace std;
 
 
-// A number is Sparse if there are no two adjacent 1s in its binary representation. 
-// For example 5 (binary representation: 101) is sparse, but 6 (binary representation: 110) is not sparse.
-// Given a number x, find the smallest Sparse number which greater than or equal to x.
+
 int lRotate(unsigned int num, int rotations){
   
   bool overflow;
 
-  if(rotations == 0) return num;
-  if(rotations > 0){
-    while(rotations != 0){
-      overflow = num & (unsigned int)INT_MIN;
-      num = (num << 1) | overflow;
-      rotations--;
-    }
-  }else{
-    while(rotations != 0){
-      overflow = num & 1;
-      num = (num >> 1) | (overflow * INT_MIN);
-      rotations++;
-    }
+  while(rotations > 0){
+    overflow = num & (unsigned int)INT_MIN;
+    num = (num << 1) | overflow;
+    rotations--;
   }
-
+  while(rotations < 0){
+    overflow = num & 1;
+    num = (num >> 1) | (overflow * INT_MIN);
+    rotations++;
+  }
 
   return num;
 }
 
 
 
-// https://www.geeksforgeeks.org/given-a-number-find-next-sparse-number
+// https://www.geeksforgeeks.org/rotate-bits-of-an-integer/
 int main(int argc, char **argv, char **envp){
 
   int num, exp; 
