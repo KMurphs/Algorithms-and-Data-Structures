@@ -3,46 +3,52 @@
 using namespace std;
 
 
+// Given an array where every element occurs three times, except one element which occurs only once. 
+// Find the element that occurs once. Expected time complexity is O(n) and O(1) extra space.
+int getUniqueElement(int *arr, int arrSize){
 
-int lRotate(unsigned int num, int rotations){
+  int elmt = 0;
 
-  rotations = rotations % (8*sizeof(num)); // Optimization. Can only do a max of 31 shifts. Note: 5%2=1, -5%2=-1
-  if(rotations < 0) rotations = rotations + (8*sizeof(num)); // Less lines of code. rotation -1 is rotation +31
-
-  while(rotations > 0){
-    num = (num << 1) | (bool)(num & INT_MIN);
-    rotations--;
+  for(int bit = 1, shifts = 0; bit != 0; bit = bit << 1, shifts++){
+    int sum = 0;
+    for(int i = 0 ; i < arrSize ; i++){
+      sum += (arr[i] & bit);
+    }
+    sum = sum >> shifts;
+    sum = sum % 3;
+    elmt = elmt | ((sum & 1) << shifts);
   }
 
-  return num;
+  return elmt;
 }
 
+// int getUniqueElement1(int *arr, int arrSize){
+
+//   int ones = 0, twos = 0, threes = 0;
+
+//   for(int i = 0 ; i < arrSize ; i++){
+
+//   }
+
+//   return 0;
+// }
 
 
-// https://www.geeksforgeeks.org/rotate-bits-of-an-integer/
+// https://www.geeksforgeeks.org/find-the-element-that-appears-once/
 int main(int argc, char **argv, char **envp){
 
-  int num, exp; 
-  
+  int arrSize, *arr, exp;
 
-  assert(lRotate(151, 0) == 151);
 
-  assert(lRotate(1, 1) == 2);
-  assert(lRotate(2, 1) == 4);
-  assert(lRotate(4, 2) == 16);
-  assert(lRotate(INT_MIN, 2) == 2);
-  assert(lRotate(INT_MIN >> 1, 4) == 12);
-  
-  assert(lRotate(1, -1) == INT_MIN);
-  assert(lRotate(2, -1) == 1);
-  assert(lRotate(8, -2) == 2);
-  assert(lRotate(INT_MIN, -2) == (0x20 << (8 * (sizeof(int) - 1))));
-  assert(lRotate(INT_MIN >> 1, -4) == (12 << (8 * (sizeof(int) - 1))));
+  arrSize = 10; arr = new int[arrSize]{12, 1, 12, 3, 12, 1, 1, 2, 3, 3}; exp = 2; 
+  assert(getUniqueElement(arr, arrSize) == exp);
 
-  assert(lRotate(1, 128) == 1);
-  assert(lRotate(1, -128) == 1);
-  assert(lRotate(1, 129) == 2);
-  assert(lRotate(1, -129) == INT_MIN);
+
+  arrSize = 7; arr = new int[arrSize]{10, 20, 10, 30, 10, 30, 30}; exp = 20; 
+  assert(getUniqueElement(arr, arrSize) == exp);
+
+
+
 
   cout << "\nProgram Exited Successfully";
   return 0;
