@@ -13,8 +13,8 @@ void Swap(int arr[], int l, int r){
 
 void bubblesort(int arr[], int arrSize){
 
-  for(int i = 0 ; i <= arrSize - 2 ; i++)
-    for(int j = 0 ; j <= arrSize - 2 - i ; j++)
+  for(int i = 0 ; i < arrSize - 1 ; i++)
+    for(int j = 0 ; j < arrSize - 1 - i ; j++)
       if(arr[j] > arr[j + 1])
         Swap(arr, j , j + 1);
 
