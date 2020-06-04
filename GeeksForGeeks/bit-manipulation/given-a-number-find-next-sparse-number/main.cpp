@@ -5,16 +5,14 @@ using namespace std;
 
 
 int lRotate(unsigned int num, int rotations){
-  
 
-  rotations = rotations % (8*sizeof(num)); // optimization. Can only do a max of 31 shifts 5%2=1, -5%2=-1
-  if(rotations < 0) rotations = rotations + (8*sizeof(num)); // less line of code. rotation -1 is rotation +31
+  rotations = rotations % (8*sizeof(num)); // Optimization. Can only do a max of 31 shifts. Note: 5%2=1, -5%2=-1
+  if(rotations < 0) rotations = rotations + (8*sizeof(num)); // Less lines of code. rotation -1 is rotation +31
 
   while(rotations > 0){
     num = (num << 1) | (bool)(num & INT_MIN);
     rotations--;
   }
-
 
   return num;
 }
@@ -41,8 +39,10 @@ int main(int argc, char **argv, char **envp){
   assert(lRotate(INT_MIN, -2) == (0x20 << (8 * (sizeof(int) - 1))));
   assert(lRotate(INT_MIN >> 1, -4) == (12 << (8 * (sizeof(int) - 1))));
 
-
-
+  assert(lRotate(1, 128) == 1);
+  assert(lRotate(1, -128) == 1);
+  assert(lRotate(1, 129) == 2);
+  assert(lRotate(1, -129) == INT_MIN);
 
   cout << "\nProgram Exited Successfully";
   return 0;
