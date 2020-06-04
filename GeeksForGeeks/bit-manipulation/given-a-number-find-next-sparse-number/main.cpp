@@ -9,7 +9,7 @@ using namespace std;
 int getNextSparseNumber(int num){
   
   int nBits = 8 * sizeof(num);
-  unsigned int pattern_00 = 3, pattern_01 = 11;
+  unsigned int pattern_00 = 0b0011, pattern_01 = 0b1011;
   int mask = INT_MIN; // INT_MIN = 1000 0000   0000 0000   0000 0000   0000 0000  (-2147483647 - 1)
   
   pattern_00 = pattern_00 << (nBits - 4);
