@@ -53,6 +53,24 @@ int getUniqueElement2(int *arr, int arrSize){
 }
 
 
+// Since everything is repeated 3 times
+// get sum of array as Sa
+// get 3 * sum of individula elemnts Sc
+// missing element is (Sc - Sa) / 2
+// requires O(n) space, #uniques element is 
+// approximately n/3 => O(n)
+//
+// std::set is commonly implemented as a red-black binary search tree. 
+// Insertion on this data structure has a worst-case of O(log(n)) 
+// complexity, as the tree is kept balanced
+// time complexity O(n log(n) + n) insertions + sum calculations
+int getUniqueElement3(int *arr, int arrSize){
+  set<int> s(arr, arr + arrSize);
+  int arrSum = accumulate(arr, arr + arrSize, 0);
+  int setSum = accumulate(s.begin(), s.end(), 0);
+  return (3*setSum - arrSum)/2;
+}
+
 
 
 
@@ -67,18 +85,18 @@ int main(int argc, char **argv, char **envp){
   arrSize = 10; arr = new int[arrSize]{12, 1, 12, 3, 12, 1, 1, 2, 3, 3}; exp = 2; 
   assert(getUniqueElement1(arr, arrSize) == exp);
   assert(getUniqueElement2(arr, arrSize) == exp);
-  // assert(getSingle(arr, arrSize) == exp);
+  assert(getUniqueElement3(arr, arrSize) == exp);
 
 
   arrSize = 7; arr = new int[arrSize]{10, 20, 10, 30, 10, 30, 30}; exp = 20; 
   assert(getUniqueElement1(arr, arrSize) == exp);
   assert(getUniqueElement2(arr, arrSize) == exp);
-  // assert(getSingle(arr, arrSize) == exp);
+  assert(getUniqueElement3(arr, arrSize) == exp);
 
   arrSize = 4; arr = new int[arrSize]{6, 7, 6, 6}; exp = 7; 
   assert(getUniqueElement1(arr, arrSize) == exp);
   assert(getUniqueElement2(arr, arrSize) == exp);
-  // assert(getSingle(arr, arrSize) == exp);
+  assert(getUniqueElement3(arr, arrSize) == exp);
 
 
   cout << "\nProgram Exited Successfully";
