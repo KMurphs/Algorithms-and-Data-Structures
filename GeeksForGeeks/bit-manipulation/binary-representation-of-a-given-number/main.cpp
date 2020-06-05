@@ -9,22 +9,18 @@ using namespace std;
 string toBinary(int num){
   
   string res = "";
-
+  
   unsigned int mask = 1 << (8*sizeof(num) - 1);
-  while(((num & mask) == 0) && (mask != 0)) {
+  while(mask != 0){
+    res = res + (num & mask ? "1" : "0");
     mask = mask >> 1;
   }
 
-  if(num & mask){
-    while(mask != 0){
-      res = res + (num & mask ? "1" : "0");
-      mask = mask >> 1;
-    }
-  }else{
-    res = "0";
-  }
+  int resStart = 0;
+  while(resStart < (8*sizeof(num) - 1) && res[resStart] == '0') 
+    resStart++;
 
-  return res;
+  return res.substr(resStart, 8*sizeof(num) - resStart);
 }
 
 
