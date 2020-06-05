@@ -10,12 +10,12 @@ int sumOfBitsDifferences(int *arr, int arrSize){
 
   int sum = 0;
   
-  for(int i = 0, mask = 1; i < 8*sizeof(arr[0]); i++, mask = mask << 1){
+  for(int mask = 1; mask != 0; mask = mask << 1){
     int nSetBits = 0;
     for(int j = 0; j < arrSize; j++){
-      nSetBits += arr[j] & mask;
+      if(arr[j] & mask)
+        nSetBits++;
     }
-    nSetBits >>= i;
     sum += 2 * nSetBits * (arrSize - nSetBits);
   }
 
