@@ -115,10 +115,19 @@ class Heap{
 
 };
 
+
+
+
+
+
+
+
+
 struct HuffmanCode{
   char data;
   int freq;
   string code;
+  HuffmanCode(){}
   HuffmanCode(char d, int f, string c): data(d), freq(f), code(c){}
 };
 class HuffManCompression{
@@ -129,18 +138,23 @@ class HuffManCompression{
     return getLeafsNumber(root->left) + getLeafsNumber(root->right);
   }
 
-  void getHuffmanCodesUtil(vector<HuffmanCode>& hCodes, TreeNode *hroot, string currCode, int *pos){
+  void getHuffmanCodesUtil(HuffmanCode *hCodes, TreeNode *hroot, string currCode, int *pos){
 
     if(hroot == nullptr) return;
-    if(!hroot->left && !hroot->right) hCodes.push_back(*new HuffmanCode(hroot->data, hroot->freq, currCode)), pos++; 
+    if(!hroot->left && !hroot->right) {
+      hCodes[*pos] = *new HuffmanCode(hroot->data, hroot->freq, currCode);
+      (*pos)++; 
+    }
 
-    getHuffmanCodesUtil(hCodes, hroot->left, currCode + "0", pos);
-    getHuffmanCodesUtil(hCodes, hroot->right, currCode + "1", pos);
+    getHuffmanCodesUtil(hCodes, hroot->left, currCode == "0" ? "0" : currCode + "0", pos);
+    getHuffmanCodesUtil(hCodes, hroot->right, currCode == "0" ? "1" : currCode + "1", pos);
 
   }
 
 
   public:
+    TreeNode *root;
+
     TreeNode *buildHuffmanTree(char data[], int freq[], int arrSize){
 
       // Step 1: Create a leaf node for each unique character and 
@@ -172,13 +186,16 @@ class HuffManCompression{
 
       // The heap was dissolved and only has one element, 
       // now we only have the HuffMan tree with its root at heap[0]
-      return hp.extractMin();
+      root = hp.extractMin();
+      return root;
     }
 
-    int getHuffmanCodes(vector<HuffmanCode>& hCodes, TreeNode *hroot){
-      int leafs = getLeafsNumber(hroot);
-      getHuffmanCodesUtil(hCodes, hroot, "0", 0);
-      return leafs;
+    HuffmanCode * getHuffmanCodes(){
+      int leafs = getLeafsNumber(root);
+      HuffmanCode *hCodes = new HuffmanCode[leafs];
+      int pos = 0;
+      getHuffmanCodesUtil(hCodes, root, "0", &pos);
+      return hCodes;
     }
 
 
@@ -194,7 +211,7 @@ class HuffManCompression{
 
 
 
-
+// https://www.geeksforgeeks.org/huffman-coding-greedy-algo-3/
 int main(int argc, char **argv, char **envp){
 
   int arrSize = 6;
@@ -203,11 +220,10 @@ int main(int argc, char **argv, char **envp){
 
   HuffManCompression *hc = new HuffManCompression();
 
-  TreeNode *root = hc->buildHuffmanTree(data, freq, arrSize);
-  vector<HuffmanCode> hcodes;
-  int codesSize = hc->getHuffmanCodes(hcodes, root);
+  hc->buildHuffmanTree(data, freq, arrSize);
+  HuffmanCode *hcodes = hc->getHuffmanCodes();
 
-  for(int i = 0 ; i < codesSize ; i++){
+  for(int i = 0 ; i < arrSize ; i++){
     cout << hcodes[i].data << "  " << hcodes[i].freq << "  " << hcodes[i].code << endl;
   }
 
