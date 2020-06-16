@@ -116,19 +116,12 @@ int getLongestPathUtil3(vector<vector<TEdge>> adj, int prev, int src){
 
   return localMax == INT_MIN ? 0 : localMax;
 }
-void Swap(int *l, int *r){
-  int tmp = *l;
-  *l = *r;
-  *r = tmp;
-}
+
 void bubbleDown(int *arr, const int arrSize){
-  for(int i = 0; i < 2; i++)
-    for(int j = 0; j < 2 - i; j++)
-      // cout << i << " " << j << endl;
-      if(arr[j] < arr[j + 1]){
-        // cout << i << " " << j << endl;
-        Swap(&arr[j], &arr[j + 1]);
-      }
+  int i = arrSize - 1, val = arr[i];
+  while(i > 0 && arr[i] > arr[i - 1])
+    arr[i] = arr[i - 1], i--;
+  arr[i] = val;
 }
 
 int getLongestPath3(vector<vector<TEdge>> adj){
