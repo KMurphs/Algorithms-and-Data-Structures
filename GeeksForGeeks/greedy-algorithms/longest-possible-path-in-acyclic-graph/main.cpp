@@ -127,6 +127,7 @@ int getLongestPath3(vector<vector<TEdge>> adj){
 
   for(int j = 0; j < adj[i].size() ; j++){
     kMax[2] = getLongestPathUtil3(adj, i, adj[i][j].dst) + adj[i][j].wght;
+    // qsort is legacy and takes a function pointer - does not work with lambda expression
     sort(kMax, kMax + SIZE, [](const int& a, const int& b) -> bool { return a > b; });
   }
 
