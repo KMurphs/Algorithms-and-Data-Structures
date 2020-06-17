@@ -116,32 +116,6 @@ int getLongestPathUtil3(vector<vector<TEdge>> adj, int prev, int src){
 
   return localMax == INT_MIN ? 0 : localMax;
 }
-void Swap(int *l, int *r){
-  int tmp = *l;
-  *l = *r;
-  *r = tmp;
-}
-int partition(int *arr, int l, int r){
-  int cacher = l - 1;
-  int piv = arr[r];
-
-  for(int i = l ; i < r ; i++){
-    if(arr[i] > piv){
-      cacher++;
-      Swap(&arr[i], &arr[cacher]);
-    }
-  }
-
-  Swap(&arr[cacher + 1], &arr[r]);
-  return cacher + 1;
-}
-void bubbleDown(int *arr, int l, int r){
-  if(l < r){
-    int pivot = partition(arr, l, r);
-    bubbleDown(arr, l, pivot - 1);
-    bubbleDown(arr, pivot + 1, r);
-  }
-}
 
 int getLongestPath3(vector<vector<TEdge>> adj){
   #define SIZE 3
@@ -153,7 +127,7 @@ int getLongestPath3(vector<vector<TEdge>> adj){
 
   for(int j = 0; j < adj[i].size() ; j++){
     kMax[2] = getLongestPathUtil3(adj, i, adj[i][j].dst) + adj[i][j].wght;
-    bubbleDown(kMax, 0, SIZE - 1);
+    sort(kMax, kMax + SIZE, [](const int& a, const int& b) -> bool { return a > b; });
   }
 
 
