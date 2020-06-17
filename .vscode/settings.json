@@ -42,6 +42,7 @@
     "xlocale": "cpp",
     "bitset": "cpp",
     "xlocmon": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "set": "cpp"
   }
 }
