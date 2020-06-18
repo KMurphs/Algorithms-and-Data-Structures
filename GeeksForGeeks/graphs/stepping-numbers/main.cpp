@@ -1,0 +1,85 @@
+
+// C program for flattening a linked list 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <cmath>
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int power(int a, int b){
+    int res = 1;
+    while(b != 0){
+        if(b & 1)
+            res = res * a;
+        b = b >> 1, a = a * a;
+    }
+    return res;
+}
+
+
+void recur(vector<int>& sols, int n, int m, int pos, int curr){
+    
+    int tmp = curr / power(10, pos);
+    
+    
+    if(curr > m) {
+        return;
+    }
+    if(curr >= n && curr <= m){
+        if(sols.size() == 0 || curr != sols.back()){
+            if(tmp != 0 || pos == 0){
+                sols.push_back(curr);
+            }
+        }
+    }
+
+
+    for( vector<int>::iterator itr = sols.begin() ; itr != sols.end() ; ++itr )
+        cout << *itr << "  ";
+    cout << endl;
+
+
+    
+    if(tmp + 1 <= 9) recur(sols, n, m, pos + 1, ((tmp + 1) * power(10, pos + 1)) + curr);
+    if(tmp - 1 >= 0) recur(sols, n, m, pos + 1, ((tmp - 1) * power(10, pos + 1)) + curr);
+}
+
+
+vector<int> stepNumbers(int n, int m){
+
+    vector<int> sols = *new vector<int>();
+    int curr;
+
+    for(int i = 0; i < 10 ; i++){
+        curr = i;
+        recur(sols, n, m, 0, curr);
+    }
+
+    return sols;
+}
+
+
+// https://www.geeksforgeeks.org/stepping-numbers/
+// Driver program to test above functions 
+int main() 
+{ 
+
+    assert(power(10, 2) == 100);
+
+    int n, m, *exp, expSize;
+    vector<int> res;
+
+    n = 0, m = 21, expSize = 13, exp = new int[expSize]{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 21 };
+    res = stepNumbers(n, m);
+    assert(res.size() == expSize);
+
+    n = 10, m = 15, expSize = 2, exp = new int[expSize]{ 10, 12 };
+    res = stepNumbers(n, m);
+    assert(res.size() == expSize);
+
+
+    cout << "\n\nProgram exited successfully" << endl;
+    return 0; 
+} 
