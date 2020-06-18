@@ -27,23 +27,20 @@ class Graph{
 
 
 
-void dfsUtil(vector<vector<TEdge>> adj, set<int>& mVertices, bool *visited, int anc, int src){
+void dfsUtil(vector<vector<TEdge>> adj, bool *visited, int anc, int src){
   
-  for (set<int>::iterator itr = mVertices.begin(); itr != mVertices.end(); ++itr) { cout << '\t' << *itr;  }  
-  cout << endl;
 
-  visited[src] = 1;
 
   vector<TEdge>::iterator it;
   for(it = adj[src].begin() ; it != adj[src].end() ; ++it){
 
-    if(mVertices.find(it->dst) == mVertices.end()) continue;
+    if(anc == it->dst) continue;
+
     if(!visited[it->dst]){
-      dfsUtil(adj, mVertices, visited, anc, it->dst);
+      visited[it->dst] = 1;
+      dfsUtil(adj, visited, anc, it->dst);
     }
-    if(anc != it->dst){
-      mVertices.erase(mVertices.find(it->dst));
-    }
+    
     
   }
 }
@@ -52,9 +49,6 @@ void dfsUtil(vector<vector<TEdge>> adj, set<int>& mVertices, bool *visited, int 
 
 int findMotherVertex(vector<vector<TEdge>> adj){
 
-  set<int> mVertices;
-  for(int i = 0 ; i < adj.size() ; i++)
-    mVertices.insert(i);
 
   bool *visited = new bool[adj.size()];
   memset(visited, 0 , adj.size() * sizeof(bool));
@@ -62,10 +56,18 @@ int findMotherVertex(vector<vector<TEdge>> adj){
 
   for(int i = 0 ; i < adj.size() ; i++){
     if(!visited[i])
-      dfsUtil(adj, mVertices, visited, i, i);
+      dfsUtil(adj, visited, i, i);
   }
 
-  return (mVertices.size() == 1) ? *mVertices.begin() : -1;
+  int vertex = -1, mVerticesCount = 0;
+  for(int i = 0 ; i < adj.size() ; i++){
+    if(!visited[i]){
+      vertex = i;
+      mVerticesCount++;
+    }
+  }
+
+  return vertex;
 }
 
 
