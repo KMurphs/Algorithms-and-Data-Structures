@@ -29,8 +29,6 @@ class Graph{
 
 void dfsUtil(vector<vector<TEdge>> adj, bool *visited, int anc, int src){
   
-
-
   vector<TEdge>::iterator it;
   for(it = adj[src].begin() ; it != adj[src].end() ; ++it){
 
@@ -40,7 +38,6 @@ void dfsUtil(vector<vector<TEdge>> adj, bool *visited, int anc, int src){
       visited[it->dst] = 1;
       dfsUtil(adj, visited, anc, it->dst);
     }
-    
     
   }
 }
@@ -76,6 +73,48 @@ int findMotherVertex(vector<vector<TEdge>> adj){
 
 
 
+void dfsUtil2(vector<vector<TEdge>> adj, bool *visited, int src){
+
+  visited[src] = 1;
+
+  for(vector<TEdge>::iterator itr = adj[src].begin() ; itr != adj[src].end() ; ++itr){
+    if(!visited[itr->dst]){
+      dfsUtil2(adj, visited, itr->dst);
+    }
+  }
+
+}
+
+
+
+int findMotherVertexKosaraju(vector<vector<TEdge>> adj){
+
+  bool *visited = new bool[adj.size()];
+  memset(visited, 0, adj.size() * sizeof(bool));
+
+  int mVertex = -1;
+
+
+  for(int i = 0 ; i < adj.size() ; i++){
+    if(!visited[i]){
+      dfsUtil2(adj, visited, i);
+      mVertex = i;
+    }
+  }
+
+
+  memset(visited, 0, adj.size() * sizeof(bool));
+  dfsUtil2(adj, visited, mVertex);
+
+
+  for(int i = 0 ; i < adj.size() ; i++){
+    if(!visited[i]){
+      return -1;
+    }
+  }
+
+  return mVertex;
+}
 
 
 
@@ -103,6 +142,8 @@ int main(int argc, char **argv, char **envp){
   int m = findMotherVertex(G.adj);
   assert(findMotherVertex(G.adj) == 5);
   assert(findMotherVertex(G1.adj) == 0);
+  assert(findMotherVertexKosaraju(G.adj) == 5);
+  assert(findMotherVertexKosaraju(G1.adj) == 0);
 
   cout << "Mother Vertex of Graph is vertex " << m << endl;
 
