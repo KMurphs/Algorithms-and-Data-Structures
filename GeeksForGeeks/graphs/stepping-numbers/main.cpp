@@ -19,37 +19,32 @@ int power(int a, int b){
 }
 
 
-void recur(vector<int>& sols, int n, int m, int pos, int curr){
-    
+void recur(set<int>& sols, int n, int m, int pos, int curr){
+
     int tmp = curr / power(10, pos);
-    
-    
+
+
     if(curr > m) {
         return;
     }
     if(curr >= n && curr <= m){
-        if(sols.size() == 0 || curr != sols.back()){
-            if(tmp != 0 || pos == 0){
-                sols.push_back(curr);
-            }
-        }
+        sols.insert(curr);
     }
 
 
-    for( vector<int>::iterator itr = sols.begin() ; itr != sols.end() ; ++itr )
+    for( set<int>::iterator itr = sols.begin() ; itr != sols.end() ; ++itr )
         cout << *itr << "  ";
     cout << endl;
 
 
-    
+
     if(tmp + 1 <= 9) recur(sols, n, m, pos + 1, ((tmp + 1) * power(10, pos + 1)) + curr);
     if(tmp - 1 >= 0) recur(sols, n, m, pos + 1, ((tmp - 1) * power(10, pos + 1)) + curr);
 }
 
+set<int> stepNumbers(int n, int m){
 
-vector<int> stepNumbers(int n, int m){
-
-    vector<int> sols = *new vector<int>();
+    set<int> sols = *new set<int>();
     int curr;
 
     for(int i = 0; i < 10 ; i++){
@@ -61,6 +56,47 @@ vector<int> stepNumbers(int n, int m){
 }
 
 
+set<int> stepNumbersQ(int n, int m){
+
+    set<int> sols = *new set<int>();
+    vector<pair<int, int>> Q = *new vector<pair<int, int>>();
+
+
+    for(int i = 0; i < 10 ; i++){
+        Q.push_back(pair<int, int>(i, 0));
+    }
+
+    pair<int, int> curr;
+    int mult = 1, tmp, future, prev = -1;
+    while (Q.size() != 0){
+        curr = Q.front();
+        Q.erase(Q.begin());
+
+
+        if(curr.first >= n && curr.first <= m && curr.first != prev){
+            sols.insert(curr.first);
+            for( set<int>::iterator itr = sols.begin() ; itr != sols.end() ; ++itr )
+                cout << *itr << "  ";
+            cout << endl;
+            prev = curr.first;
+        }
+
+
+        mult = power(10, curr.second);
+        tmp = curr.first / mult;
+        future = ((tmp - 1) * mult * 10) + curr.first;
+        if(tmp - 1 >= 0 && future <= m) Q.push_back(pair<int, int>(future, curr.second + 1));
+        future = ((tmp + 1) * mult * 10) + curr.first;
+        if(tmp + 1 <= 9 && future <= m) Q.push_back(pair<int, int>(future, curr.second + 1)); 
+    }
+    
+
+    return sols;
+}
+
+
+
+
 // https://www.geeksforgeeks.org/stepping-numbers/
 // Driver program to test above functions 
 int main() 
@@ -69,16 +105,20 @@ int main()
     assert(power(10, 2) == 100);
 
     int n, m, *exp, expSize;
-    vector<int> res;
+    set<int> res;
 
     n = 0, m = 21, expSize = 13, exp = new int[expSize]{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 21 };
     res = stepNumbers(n, m);
     assert(res.size() == expSize);
+    res = stepNumbersQ(n, m);
+    assert(res.size() == expSize);
+
 
     n = 10, m = 15, expSize = 2, exp = new int[expSize]{ 10, 12 };
     res = stepNumbers(n, m);
     assert(res.size() == expSize);
-
+    res = stepNumbersQ(n, m);
+    assert(res.size() == expSize);
 
     cout << "\n\nProgram exited successfully" << endl;
     return 0; 
