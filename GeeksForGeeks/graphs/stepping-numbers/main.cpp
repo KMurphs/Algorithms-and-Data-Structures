@@ -23,20 +23,12 @@ void recur(set<int>& sols, int n, int m, int pos, int curr){
 
     int tmp = curr / power(10, pos);
 
-
     if(curr > m) {
         return;
     }
     if(curr >= n && curr <= m){
         sols.insert(curr);
     }
-
-
-    for( set<int>::iterator itr = sols.begin() ; itr != sols.end() ; ++itr )
-        cout << *itr << "  ";
-    cout << endl;
-
-
 
     if(tmp + 1 <= 9) recur(sols, n, m, pos + 1, ((tmp + 1) * power(10, pos + 1)) + curr);
     if(tmp - 1 >= 0) recur(sols, n, m, pos + 1, ((tmp - 1) * power(10, pos + 1)) + curr);
@@ -67,18 +59,14 @@ set<int> stepNumbersQ(int n, int m){
     }
 
     pair<int, int> curr;
-    int mult = 1, tmp, future, prev = -1;
+    int mult = 1, tmp, future;
     while (Q.size() != 0){
         curr = Q.front();
         Q.erase(Q.begin());
 
 
-        if(curr.first >= n && curr.first <= m && curr.first != prev){
+        if(curr.first >= n && curr.first <= m){
             sols.insert(curr.first);
-            for( set<int>::iterator itr = sols.begin() ; itr != sols.end() ; ++itr )
-                cout << *itr << "  ";
-            cout << endl;
-            prev = curr.first;
         }
 
 
