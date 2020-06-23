@@ -41,6 +41,7 @@ bool dfsUtil(vector<vector<int>> adj, int *visited, int *currPath, int *pathPos,
   cout << endl;
 
   for(vector<int>::iterator itr = adj[src].begin() ; itr != adj[src].end() ; ++itr){
+    
     if(!visited[*itr]){
 
       visited[*itr] = 1;
@@ -51,8 +52,8 @@ bool dfsUtil(vector<vector<int>> adj, int *visited, int *currPath, int *pathPos,
 
       (*pathPos)--;
       visited[*itr] = 0;
-    }
-    else if((*itr == currPath[0]) && (*itr != src) && (*pathPos == adj.size())){
+
+    } else if((*itr == currPath[0]) && (*itr != src) && (*pathPos == adj.size())){
       return true;
     }
   }
