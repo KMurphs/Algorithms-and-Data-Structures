@@ -13,7 +13,6 @@ bool backTracking(map<char, int>& mp, int *digs, string str1, string str2, strin
 
 
 
-
   if(itr == mp.end()){
     int a, b, c, carry;
 
@@ -36,7 +35,6 @@ bool backTracking(map<char, int>& mp, int *digs, string str1, string str2, strin
     return true;
   }
   
-
 
 
 
@@ -68,6 +66,9 @@ bool solve(string str1, string str2, string str3){
   for(int i = 0 ; i < 10 ; i++)
     digs[i] = 1;
 
+
+
+
   map<char, int> mp = *new map<char, int>();
 
   char *alphabet = new char[ALPHABET_SIZE];
@@ -80,8 +81,25 @@ bool solve(string str1, string str2, string str3){
     if(alphabet[i] != 0)
       mp[i + 'A'] = -1;
 
+
+
+
   return backTracking(mp, digs, str1, str2, str3);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // https://www.geeksforgeeks.org/solving-cryptarithmetic-puzzles-backtracking-8/
 int main(){
