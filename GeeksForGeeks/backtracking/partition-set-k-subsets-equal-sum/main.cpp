@@ -31,10 +31,10 @@ int *partition(int *arr, int arrSize, int K){
 
   int sum = accumulate(arr, arr + arrSize, 0), target = 0;
   sort(arr, arr + arrSize);
-  target = sum / 3;
+  target = sum / K;
 
 
-  if(sum % 3 != 0) return inv;
+  if(sum % K != 0) return inv;
   if(arr[arrSize - 1] > target && arr[0] > 0) return inv;
 
 
