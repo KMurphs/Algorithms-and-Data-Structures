@@ -35,7 +35,7 @@ int *partition(int *arr, int arrSize, int K){
 
 
   if(sum % 3 != 0) return inv;
-  if(arr[arrSize - 1] > target) return inv;
+  if(arr[arrSize - 1] > target && arr[0] > 0) return inv;
 
 
   for(int k = 1, i = arrSize - k ; k <= K ; k++){
