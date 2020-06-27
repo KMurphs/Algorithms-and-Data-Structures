@@ -56,7 +56,7 @@ int printPalyndromicPartitions(string str){
 
 
 
-
+// https://www.geeksforgeeks.org/print-palindromic-partitions-string/
 int main(int argc, char **argv, char **envp){
 
   string str, exp, res;
