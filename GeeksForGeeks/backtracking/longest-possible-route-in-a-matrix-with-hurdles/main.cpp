@@ -17,6 +17,13 @@ struct TPoint{
   }
 };
 
+
+
+
+// pos is valid if:
+// - within bounds and
+// - not a hurdle (mat[pos.row][pos.col] != 0)
+// - not previously visited (mat[pos.row][pos.col] != 2)
 bool isValid(int mat[R][C], TPoint pos){
   if(pos.row < 0 || pos.col < 0) return false;
   if(pos.row >= R || pos.col >= C) return false;
@@ -24,34 +31,50 @@ bool isValid(int mat[R][C], TPoint pos){
   return true;
 }
 
-int findLongestPath(int mat[R][C], TPoint src, TPoint dst){
 
-  TPoint *increments[INCREMENTS] = {
-    new TPoint(1, 0),
-    new TPoint(0, 1),
-    new TPoint(-1, 0),
-    new TPoint(0, -1)
-  };
+
+TPoint *increments[INCREMENTS] = {
+ new TPoint(1, 0),
+ new TPoint(0, 1),
+ new TPoint(-1, 0),
+ new TPoint(0, -1)
+};
+
+
+
+
+int findLongestPath(int mat[R][C], TPoint src, TPoint dst){
 
   if(src.row == dst.row && src.col == dst.col){
     return 0;
   }
 
+
+
   int maxLength = INT_MIN, tmpLength;
 
   for(int i = 0 ; i < INCREMENTS ; i++){
+
     TPoint next = src.translate(increments[i]);
     if(isValid(mat, next)){
+      
+      // Backtracking
       mat[next.row][next.col] = 2;
       tmpLength = findLongestPath(mat, next, dst);
+      mat[next.row][next.col] = 1;
+
+      // Latching local optimal solution
       if(maxLength < tmpLength)
         maxLength = tmpLength;
-      mat[next.row][next.col] = 1;
+
     }
   }
   
   return maxLength + 1;
 }
+
+
+
 
 
 // https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/
