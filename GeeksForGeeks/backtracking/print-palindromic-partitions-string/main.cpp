@@ -13,6 +13,10 @@ bool isPalyndrom(string str, int l, int r){
 }
 
 
+
+
+
+
 void generatePalyndromPartitions(vector<vector<string>>& sols, string str, int pos, vector<string>& curr){
 
   if(pos >= str.size()){
@@ -21,8 +25,6 @@ void generatePalyndromPartitions(vector<vector<string>>& sols, string str, int p
   }
 
 
-
-  cout << endl;
   for(int end = pos + 1 ; end <= str.size() ; end++){
     if(isPalyndrom(str, pos, end - 1)){
       curr.push_back(str.substr(pos, end - pos));
@@ -31,10 +33,9 @@ void generatePalyndromPartitions(vector<vector<string>>& sols, string str, int p
     }
   }
 
-
-
-
 }
+
+
 
 
 int printPalyndromicPartitions(string str){
