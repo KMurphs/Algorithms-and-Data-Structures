@@ -24,8 +24,8 @@ int explore(int arr[], int arrSize, int target, int pos, int accum, vector<int> 
   int subsets = 0;
   for(int i = pos ; i < arrSize ; i++){
     currSubset.push_back(arr[i]);
-    if(explore(arr, arrSize, target, i + 1, accum + arr[i], currSubset) == 1)
-      subsets++;
+    int foundSubsets = explore(arr, arrSize, target, i + 1, accum + arr[i], currSubset);
+    subsets += foundSubsets;
     currSubset.pop_back();
   }
   return subsets;
@@ -44,7 +44,7 @@ int findSubsetsToSum(int arr[], int arrSize, int target){
   cout << endl;
 
   vector<int> currSubset = *new vector<int>();
-  
+
   return explore(arr, arrSize, target, 0, 0, currSubset);
 }
 
