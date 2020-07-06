@@ -17,17 +17,29 @@ void solve(int *set, int setSize, int *pMoves, int l, int r, int pId, int *local
   int *lSol = new int[2]{0, 0};
   int *rSol = new int[2]{0, 0};
 
-  pMoves[l] = pId % 2;
-  solve(set, setSize, pMoves, l + 1, r, pId + 1, lSol);
+  int *lMoves = new int[setSize];
+  memset(lMoves, 0, sizeof(int) * setSize);
+  lMoves[l] = pId;
+  solve(set, setSize, lMoves, l + 1, r, pId + 1, lSol);
 
-  pMoves[r] = pId % 2;
-  solve(set, setSize, pMoves, l, r - 1, pId + 1, rSol);
+
+  int *rMoves = new int[setSize];
+  memset(rMoves, 0, sizeof(int) * setSize);
+  rMoves[r] = pId;
+  solve(set, setSize, rMoves, l, r - 1, pId + 1, rSol);
+
 
   int lSum = set[l] + lSol[pId % 2];
   int rSum = set[r] + rSol[pId % 2];
   localSol[0 + (pId % 2)] = max(lSum, rSum);
   localSol[1 - (pId % 2)] = lSum > rSum ? lSol[1 - (pId % 2)] : rSol[1 - (pId % 2)];
 
+
+  copy(
+    (lSum > rSum ? lMoves : rMoves) + l, 
+    (lSum > rSum ? lMoves : rMoves) + r + 1, 
+    pMoves + l
+  );
 }
 
 
@@ -36,9 +48,19 @@ void printSolution(int *set, int *pMoves, int setSize, int l, int r, int pId, in
 
   if(l > r) return;
 
+  
+  // int lMove = ((pMoves[l] % 2) == (pId % 2)) ? pMoves[l] : 0;
+  int lMove = (pMoves[l] == pId) ? pMoves[l] : INT_MAX;
+  // int rMove = ((pMoves[r] % 2) == (pId % 2)) ? pMoves[r] : 0;
+  int rMove = (pMoves[r] == pId) ? pMoves[r] : INT_MAX;
+
+  int cMove = min(lMove, rMove);
+  
+
   int pCurrMove;
-  if(pMoves[l] == (pId % 2)) pCurrMove = set[l++];
-  else if(pMoves[r] == (pId % 2)) pCurrMove = set[r--];
+  if(pMoves[l] == cMove) pCurrMove = set[l++];
+  else if(pMoves[r] == cMove) pCurrMove = set[r--];
+
 
   cout << "Player '" << (1 + pId % 2) << "' chose : '" << pCurrMove << "'. Current Sum ('" << (pCurrSum + pCurrMove) << "')" << endl;
 
