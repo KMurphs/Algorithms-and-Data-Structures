@@ -48,12 +48,9 @@ void printSolution(int *set, int *pMoves, int setSize, int l, int r, int pId, in
 
   if(l > r) return;
 
-  
-  // int lMove = ((pMoves[l] % 2) == (pId % 2)) ? pMoves[l] : 0;
-  int lMove = (pMoves[l] == pId) ? pMoves[l] : INT_MAX;
-  // int rMove = ((pMoves[r] % 2) == (pId % 2)) ? pMoves[r] : 0;
-  int rMove = (pMoves[r] == pId) ? pMoves[r] : INT_MAX;
 
+  int lMove = (pMoves[l] == pId) ? pMoves[l] : INT_MAX;
+  int rMove = (pMoves[r] == pId) ? pMoves[r] : INT_MAX;
   int cMove = min(lMove, rMove);
   
 
