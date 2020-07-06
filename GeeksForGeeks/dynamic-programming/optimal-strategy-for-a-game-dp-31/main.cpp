@@ -44,24 +44,19 @@ void solve(int *set, int setSize, int *pMoves, int l, int r, int pId, int *local
 
 
 
-void printSolution(int *set, int *pMoves, int setSize, int l, int r, int pId, int pCurrSum, int pAltSum){
+void printSolution(int *set, int *pMoves, int setSize, int l, int r, int pCurrSum, int pAltSum){
 
   if(l > r) return;
 
-
-  int lMove = (pMoves[l] == pId) ? pMoves[l] : INT_MAX;
-  int rMove = (pMoves[r] == pId) ? pMoves[r] : INT_MAX;
-  int cMove = min(lMove, rMove);
-  
-
+  int cMove = min(pMoves[l], pMoves[r]);
   int pCurrMove;
+
   if(pMoves[l] == cMove) pCurrMove = set[l++];
   else if(pMoves[r] == cMove) pCurrMove = set[r--];
 
+  cout << "Player '" << (1 + (cMove % 2)) << "' chose : '" << pCurrMove << "'. Current Sum ('" << (pCurrSum + pCurrMove) << "')" << endl;
 
-  cout << "Player '" << (1 + pId % 2) << "' chose : '" << pCurrMove << "'. Current Sum ('" << (pCurrSum + pCurrMove) << "')" << endl;
-
-  printSolution(set, pMoves, setSize, l, r, pId + 1, pAltSum, pCurrSum + pCurrMove);
+  printSolution(set, pMoves, setSize, l, r, pAltSum, pCurrSum + pCurrMove);
 }
 
 
@@ -75,7 +70,7 @@ int findOptimalStrategy(int *set, int setSize){
   solve(set, setSize, pMoves, 0, setSize - 1, 0, glSol);
 
   cout << "              ******" << endl;
-  printSolution(set, pMoves, setSize, 0, setSize - 1, 0, 0, 0);
+  printSolution(set, pMoves, setSize, 0, setSize - 1, 0, 0);
   return glSol[0];
 }
 
