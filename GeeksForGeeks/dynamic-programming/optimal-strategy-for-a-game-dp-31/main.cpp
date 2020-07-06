@@ -3,9 +3,15 @@
 using namespace std;
 
 
+// 1. Brute Force
+// 2. Memoization
+// 3. Tabulation
 
-
-//Brute Force
+// Brute Force
+// Brute Force Solution is formulated in a recursive form (optimal substructure property)
+// Same subsproblems are solved again and again (although number of possible games is O(2^n))
+// There are only (n-1) games of size 2 (overlapping subproblems)
+// We therefore have a good candidate for dynamic programming
 void solve(int *set, int setSize, int *pMoves, int l, int r, int pId, int *localSol){
 
   if(l > r){
@@ -14,8 +20,10 @@ void solve(int *set, int setSize, int *pMoves, int l, int r, int pId, int *local
     return;
   }
 
+
   int *lSol = new int[2]{0, 0};
   int *rSol = new int[2]{0, 0};
+
 
   int *lMoves = new int[setSize];
   memset(lMoves, 0, sizeof(int) * setSize);
@@ -42,8 +50,6 @@ void solve(int *set, int setSize, int *pMoves, int l, int r, int pId, int *local
   );
 }
 
-
-
 void printSolution(int *set, int *pMoves, int setSize, int l, int r, int pCurrSum, int pAltSum){
 
   if(l > r) return;
@@ -58,9 +64,6 @@ void printSolution(int *set, int *pMoves, int setSize, int l, int r, int pCurrSu
 
   printSolution(set, pMoves, setSize, l, r, pAltSum, pCurrSum + pCurrMove);
 }
-
-
-
 
 int findOptimalStrategy(int *set, int setSize){
   int *glSol = new int[2]{ 0, 0 };
@@ -77,6 +80,60 @@ int findOptimalStrategy(int *set, int setSize){
 
 
 
+struct TDPItem{
+  int pSums[2];
+  int pCurrMove;
+  int pCurrPlayer;
+};
+
+// We will first solve problems of size 2, then 3, ... until the whole problem is solved
+int findOptimalStrategyDP(int *set, int setSize){
+
+  TDPItem **dp = new TDPItem*[setSize];
+  for(int i = 0 ; i < setSize ; i++){
+    dp[i] = new TDPItem[setSize];
+    memset(dp[i], 0, setSize * sizeof(TDPItem));
+  }
+
+
+  for(int i = 0 ; i < setSize ; i++){
+    dp[i][i].pCurrPlayer = 1;
+    dp[i][i].pCurrMove = set[i];
+    dp[i][i].pSums[0] = 0;
+    dp[i][i].pSums[1] = set[i];
+  }
+
+
+  for(int gSize = 1 ; gSize < setSize ; gSize++){
+    for(int l = 0, r = l + gSize ; l < setSize && r < setSize ; l++, r = l + gSize){
+
+      int pCurr = (r - l + 1) % 2;
+      int pNext = 1 - pCurr;
+
+      dp[l][r].pCurrPlayer = pCurr;
+
+
+
+      int lMove = set[l] + dp[l + 1][r].pSums[pCurr];
+      int rMove = set[r] + dp[l][r - 1].pSums[pCurr];
+
+      dp[l][r].pCurrMove = lMove > rMove ? set[l] : set[r];
+
+
+
+      dp[l][r].pSums[pCurr] = lMove > rMove ? lMove : rMove;
+      dp[l][r].pSums[pNext] = lMove > rMove 
+            ? dp[l + 1][r].pSums[pNext]
+            : dp[l][r - 1].pSums[pNext];
+    }
+  }
+
+  return dp[0][setSize - 1].pSums[0];
+}
+
+
+
+
 
 
 // https://www.geeksforgeeks.org/optimal-strategy-for-a-game-dp-31/
@@ -86,15 +143,19 @@ int main(int argc, char **argv, char **envp){
 
   setSize = 4, set = new int[setSize]{ 8, 15, 3, 7 };
   assert(findOptimalStrategy(set, setSize) == 22);
+  assert(findOptimalStrategyDP(set, setSize) == 22);
 
   setSize = 4, set = new int[setSize]{ 5, 3, 7, 10 };
   assert(findOptimalStrategy(set, setSize) == 15);
+  assert(findOptimalStrategyDP(set, setSize) == 15);
 
   setSize = 4, set = new int[setSize]{ 2, 2, 2, 2 };
   assert(findOptimalStrategy(set, setSize) == 4);
+  assert(findOptimalStrategyDP(set, setSize) == 4);
 
   setSize = 6, set = new int[setSize]{ 20, 30, 2, 2, 2, 10 };
   assert(findOptimalStrategy(set, setSize) == 42);
+  assert(findOptimalStrategyDP(set, setSize) == 42);
 
 
 
