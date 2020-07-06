@@ -85,6 +85,19 @@ struct TDPItem{
   int pCurrMove;
   int pCurrPlayer;
 };
+void printSolution2(int *set, TDPItem **dp, int l, int r, int pCurrSum, int pNextSum){
+
+  if(l > r) return;
+
+  TDPItem curr = dp[l][r];
+  int nl = curr.pCurrMove == set[l] ? l + 1 : l;
+  int nr = curr.pCurrMove == set[r] ? r - 1 : r;
+
+
+  cout << "\tPlayer '" << (1 + (curr.pCurrPlayer % 2)) << "' chose : '" << (curr.pCurrMove) << "'. Current Sum ('" << (pCurrSum + curr.pCurrMove) << "')" << endl;
+
+  printSolution2(set, dp, nl, nr, pNextSum, pCurrSum + curr.pCurrMove);
+}
 
 // We will first solve problems of size 2, then 3, ... until the whole problem is solved
 int findOptimalStrategyDP(int *set, int setSize){
@@ -127,6 +140,14 @@ int findOptimalStrategyDP(int *set, int setSize){
             : dp[l][r - 1].pSums[pNext];
     }
   }
+
+
+
+
+
+  cout << "              -----------" << endl;
+  printSolution2(set, dp, 0, setSize - 1, 0, 0);
+
 
   return dp[0][setSize - 1].pSums[0];
 }
