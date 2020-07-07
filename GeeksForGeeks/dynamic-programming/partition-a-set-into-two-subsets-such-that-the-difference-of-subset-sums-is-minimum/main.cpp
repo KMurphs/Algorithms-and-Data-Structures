@@ -24,6 +24,36 @@ int partition(int *arr, int n){
 
 
 
+
+
+
+
+
+
+
+
+
+void printSolution(int **dp, int *arr, int row, int col){
+
+  if(row == 0){
+    cout << endl;
+    return;
+  }
+
+  if(!dp[row - 1][col] && col >= arr[row - 1]){
+    cout << "Set 1: " << arr[row - 1] << endl;
+  }else{
+    cout << "Set 2: " << arr[row - 1] << endl;
+  }
+
+  if(dp[row - 1][col]){
+    printSolution(dp, arr, row - 1, col);
+  }else if(col >= arr[row - 1]){
+    printSolution(dp, arr, row - 1, col - arr[row - 1]);
+  }
+
+}
+
 // Altough the overlapping would suggest solving subproblems of 
 // increasing sizes. No recursive relation between these subproblems
 // was found that can be used to build solution from the bottom up
@@ -70,12 +100,17 @@ int partitionDP(int *arr, int n){
 
 
   int diff = 0;
+  int maxj = 0;
   for(int j = (sum + 1)/2; j >= 0; j--){
     if(dp[n][j] == 1){
       diff = j - (sum - j);
+      maxj = j;
       break;
     }
   }
+
+
+  printSolution(dp, arr, n, maxj);
 
   return diff >= 0 ? diff : -1 * diff;
 }
