@@ -60,6 +60,8 @@ void printSolution(int **dp, int *values, int *weights, int row, int col){
 }
 
 
+
+
 int solveKnapsackDP(int *weights, int *values, int n, int maxWeight){
 
 
@@ -71,9 +73,12 @@ int solveKnapsackDP(int *weights, int *values, int n, int maxWeight){
 
 
 
+
+
   for (int j = 1; j < maxWeight + 1; j++) {
     dp[0][j] = INT_MIN;
   }
+
 
   for (int i = 1; i < n + 1; i++) {
     dp[i][0] = 0;
@@ -89,6 +94,9 @@ int solveKnapsackDP(int *weights, int *values, int n, int maxWeight){
   }
   
 
+
+  
+
   int maxVal = 0, maxWght = 0;
   for (int j = maxWeight; j >= 0; j--){
     if (dp[n][j] != INT_MIN) {
@@ -100,8 +108,6 @@ int solveKnapsackDP(int *weights, int *values, int n, int maxWeight){
 
 
   printSolution(dp, values, weights, n, maxWght);
-
-
   return maxVal;
 }
 
