@@ -38,21 +38,23 @@ int solveKnapsack(int *weights, int *values, int n, int maxWeight){
 
 
 
-void printSolution(int **dp, int *values, int row, int col, int maxWeight){
+void printSolution(int **dp, int *values, int *weights, int row, int col){
 
   if(row == 0){
     cout << endl;
     return;
   }
 
-  if(!dp[row - 1][col] <= maxWeight && col >= values[row - 1]){
-    cout << values[row - 1] << "  ";
+
+  if(dp[row - 1][col] != dp[row][col] && col >= weights[row - 1]){
+    cout << "Value: " << values[row - 1] << " - Weight: " << weights[row - 1] << endl;
   }
 
-  if(dp[row - 1][col] <= maxWeight){
-    printSolution(dp, values, row - 1, col, maxWeight);
-  }else if(col >= values[row - 1]){
-    printSolution(dp, values, row - 1, col - values[row - 1], maxWeight);
+
+  if(dp[row - 1][col] == dp[row][col] ){
+    printSolution(dp, values, weights, row - 1, col);
+  }else if(col >= weights[row - 1]){
+    printSolution(dp, values, weights, row - 1, col - weights[row - 1]);
   }
 
 }
@@ -60,56 +62,47 @@ void printSolution(int **dp, int *values, int row, int col, int maxWeight){
 
 int solveKnapsackDP(int *weights, int *values, int n, int maxWeight){
 
-  int sumValues = accumulate(values, values + n, 0);
 
   int **dp = new int*[n + 1];
   for (int i = 0; i < n + 1; i++){
-    dp[i] = new int[sumValues + 1];
-    memset(dp[i], 0, sizeof(int) * (sumValues + 1));
+    dp[i] = new int[maxWeight + 1];
+    memset(dp[i], 0, sizeof(int) * (maxWeight + 1));
   }
-  
-  for (int j = 1; j < sumValues + 1; j++) {
-    dp[0][j] = INT_MAX;
+
+
+
+  for (int j = 1; j < maxWeight + 1; j++) {
+    dp[0][j] = INT_MIN;
   }
 
   for (int i = 1; i < n + 1; i++) {
-
     dp[i][0] = 0;
 
-    for (int j = 1; j < sumValues + 1; j++) {
+    for (int j = 1; j < maxWeight + 1; j++) {
+      dp[i][j] = dp[i - 1][j];
 
-
-      int wght1 = dp[i - 1][j];
-
-
-      int wght2 = ( (j >= values[i - 1]) && (dp[i - 1][j - values[i - 1]] <= maxWeight) )
-        ? dp[i - 1][j - values[i - 1]] + weights[i - 1]
-        : INT_MAX;
-
-
-      int wght3 = max(wght1, wght2);
-      if(wght1 > maxWeight || wght2 > maxWeight) wght3 = min(wght1, wght2);
-
-
-      dp[i][j] = wght3 > maxWeight ? INT_MAX : wght3;
+      if((j >= weights[i - 1]) && dp[i][j] < dp[i - 1][j - weights[i - 1]]){
+        dp[i][j] = dp[i - 1][j - weights[i - 1]] + values[i - 1];
+      }
 
     }
   }
   
 
-  int maxValue = 0;
-  for (int j = sumValues; j >= 0; j--){
-    if (dp[n][j] <= maxWeight) {
-      maxValue = j;
+  int maxVal = 0, maxWght = 0;
+  for (int j = maxWeight; j >= 0; j--){
+    if (dp[n][j] != INT_MIN) {
+      maxVal = dp[n][j];
+      maxWght = j;
       break;
     }
   }
 
 
-  printSolution(dp, values, n, maxValue, maxWeight);
+  printSolution(dp, values, weights, n, maxWght);
 
 
-  return maxValue;
+  return maxVal;
 }
 
 
