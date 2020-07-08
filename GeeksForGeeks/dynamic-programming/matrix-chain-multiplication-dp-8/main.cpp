@@ -52,10 +52,34 @@ int reduceTotalOperations(int *mats, int n){
 
 
 
+  // for (int l = 2; l < n; l++){
+  //   for (int i = 0; i < n && i + l < n; i++){
+  //     dp[i][i + l] = min(
+  //       dp[i][i + l - 1] + mats[i] * mats[i + l - 1] * mats[i + l],
+  //       dp[i + 1][i + l] + mats[i + 1] * mats[i] * mats[i + l]
+  //     );
+  //   }
+  // }
 
 
+string printSolution(int **dp, int *mats, int row, int col){
 
+  if(col - row == 1){
+    return *new string(1, (char)('A' + row));
+  }
 
+  int ops;
+  
+  ops = dp[row][col - 1] + mats[row] * mats[col - 1] * mats[col];
+
+  if(dp[row][col] == ops){
+    string res = printSolution(dp, mats, row, col - 1);
+    return (res.size() > 1 ? "(" + res + ")" : res) + "*" + (char)('A' + col - 1);
+  }
+
+  string res = printSolution(dp, mats, row + 1, col);
+  return *new string(1, (char)('A' + row)) + "*" + (res.size() > 1 ? "(" + res + ")" : res);
+}
 
 int reduceTotalOperationsDP(int *mats, int n){
 
@@ -83,6 +107,9 @@ int reduceTotalOperationsDP(int *mats, int n){
       );
     }
   }
+
+  string res = printSolution(dp, mats, 0, n - 1);
+  cout << res << endl;
 
 
   return dp[0][n - 1];
