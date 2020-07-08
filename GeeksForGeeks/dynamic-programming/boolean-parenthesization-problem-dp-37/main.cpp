@@ -52,10 +52,6 @@ TSol solve(char *syms, char *ops, int n, int start, int end){
     sol.N += evaluate(0, 1, ops[i]) ? 0 : r1.N * r2.T;
     sol.N += evaluate(0, 0, ops[i]) ? 0 : r1.N * r2.N;
 
-    for(vector<string>::iterator j = r1.expressions.begin() ; j != r1.expressions.end() ; ++j)
-      for(vector<string>::iterator k = r2.expressions.begin() ; k != r2.expressions.end() ; ++k)
-        sol.expressions.push_back("(" + *j + " " + ops[i] + " " + *k + ")");
-
   }
   return sol;
 }
@@ -68,17 +64,99 @@ int solveParenthesis(char *syms, char *ops, int n){
 
   TSol res = solve(syms, ops, n, 0, n - 1);
 
-  for(vector<string>::iterator it = res.expressions.begin() ; it != res.expressions.end() ; ++it)
-    cout << *it << endl;
-
   return res.T;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 struct TDPItem{
   int T, N, All;
   TDPItem(): T(0), N(0), All(0){}
 };
+struct TString{
+  vector<string> T, N;
+  TString(): T(*new vector<string>()), N(*new vector<string>()){}
+};
+void crossStrings(TString& tmp, TString r1, TString r2, char op){
+
+  if(evaluate(1, 1, op)){
+    for(vector<string>::iterator j = r1.T.begin() ; j != r1.T.end() ; ++j)
+      for(vector<string>::iterator k = r2.T.begin() ; k != r2.T.end() ; ++k)
+        tmp.T.push_back("(" + *j + " " + op + " " + *k + ")");
+  } else {
+    for(vector<string>::iterator j = r1.T.begin() ; j != r1.T.end() ; ++j)
+      for(vector<string>::iterator k = r2.T.begin() ; k != r2.T.end() ; ++k)
+        tmp.N.push_back("(" + *j + " " + op + " " + *k + ")");
+  }
+
+  if(evaluate(1, 0, op)){
+    for(vector<string>::iterator j = r1.T.begin() ; j != r1.T.end() ; ++j)
+      for(vector<string>::iterator k = r2.N.begin() ; k != r2.N.end() ; ++k)
+        tmp.T.push_back("(" + *j + " " + op + " " + *k + ")");
+  } else {
+    for(vector<string>::iterator j = r1.T.begin() ; j != r1.T.end() ; ++j)
+      for(vector<string>::iterator k = r2.N.begin() ; k != r2.N.end() ; ++k)
+        tmp.N.push_back("(" + *j + " " + op + " " + *k + ")");
+  }
+   
+  if(evaluate(0, 1, op)){
+    for(vector<string>::iterator j = r1.N.begin() ; j != r1.N.end() ; ++j)
+      for(vector<string>::iterator k = r2.T.begin() ; k != r2.T.end() ; ++k)
+        tmp.T.push_back("(" + *j + " " + op + " " + *k + ")");
+  } else {
+    for(vector<string>::iterator j = r1.N.begin() ; j != r1.N.end() ; ++j)
+      for(vector<string>::iterator k = r2.T.begin() ; k != r2.T.end() ; ++k)
+        tmp.N.push_back("(" + *j + " " + op + " " + *k + ")");
+  }
+
+  if(evaluate(0, 0, op)){
+    for(vector<string>::iterator j = r1.N.begin() ; j != r1.N.end() ; ++j)
+      for(vector<string>::iterator k = r2.N.begin() ; k != r2.N.end() ; ++k)
+        tmp.T.push_back("(" + *j + " " + op + " " + *k + ")");
+  } else {
+    for(vector<string>::iterator j = r1.N.begin() ; j != r1.N.end() ; ++j)
+      for(vector<string>::iterator k = r2.N.begin() ; k != r2.N.end() ; ++k)
+        tmp.N.push_back("(" + *j + " " + op + " " + *k + ")");
+  }
+
+}
+TString getStrings(char *syms, char *ops, int n, TDPItem **dp, int row, int col){
+
+  if(row == col){
+    TString res = *new TString();
+    if(charToBoolean(syms[row])) 
+      res.T.push_back(*new string(1, syms[row]));
+    else 
+      res.N.push_back(*new string(1, syms[row]));
+    return res;
+  }
+
+
+  TString tmp = *new TString();
+  for(int i = row ; i < col ; i++){
+
+    TString r1 = getStrings(syms, ops, n, dp, row, i);
+    TString r2 = getStrings(syms, ops, n, dp, i + 1, col);
+
+    crossStrings(tmp, r1, r2, ops[i]);
+  }
+  return tmp;
+}
+
+
+
 
 int solveParenthesisDP(char *syms, char *ops, int n){
 
@@ -119,6 +197,18 @@ int solveParenthesisDP(char *syms, char *ops, int n){
       }
     }
   }
+
+
+  // Printing Solution
+  TString res = getStrings(syms, ops, n, dp, 0, n - 1);
+
+  cout << "Positive Strings (" << dp[0][n - 1].T << "/" << dp[0][n - 1].All << ")" << endl;
+  for(vector<string>::iterator it = res.T.begin() ; it != res.T.end() ; ++it)
+    cout << *it << endl;
+
+  cout << "Negative Strings (" << dp[0][n - 1].N << "/" << dp[0][n - 1].All << ")" << endl;
+  for(vector<string>::iterator it = res.N.begin() ; it != res.N.end() ; ++it)
+    cout << *it << endl;
 
 
   return dp[0][n - 1].T;
