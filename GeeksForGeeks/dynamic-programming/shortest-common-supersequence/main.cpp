@@ -35,6 +35,29 @@ string buildShortestSuperSeq(string s1, string s2, int i1 = 0, int i2 = 0){
 
 
 
+
+
+
+
+
+string printSolution(int **dp, string s1, string s2, int row, int col){
+
+  if(row == 0) return s2.substr(0, col);
+  if(col == 0) return s1.substr(0, row);
+
+  if(s1[row - 1] == s2[col - 1]){
+    if(dp[row - 1][col] >= dp[row][col - 1])
+      return printSolution(dp, s1, s2, row - 1, col);
+    else
+      return printSolution(dp, s1, s2, row, col - 1);
+  }
+
+  if(dp[row - 1][col] >= dp[row][col - 1])
+    return printSolution(dp, s1, s2, row, col - 1) + s2[col - 1];
+  else
+    return printSolution(dp, s1, s2, row - 1, col) + s1[row - 1];
+}
+
 string buildShortestSuperSeqDP(string s1, string s2){
 
   int **dp = new int*[s1.size() + 1];
@@ -57,14 +80,18 @@ string buildShortestSuperSeqDP(string s1, string s2){
       if(s1[i - 1] == s2[j - 1])
         dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);   // If match the longest neighbour becomes the answer
       else 
-        dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + 1; // If not match, the shortest neighbour is promoted
+        dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + 1; // If not match, the shortest neighbour is mutated
     }
   }
 
 
-  cout << dp[s1.size()][s2.size()] << endl;
+  
 
-  return *new string(dp[s1.size()][s2.size()], 'x');
+  string res = printSolution(dp, s1, s2, s1.size(), s2.size());
+  // cout << res << endl;
+  // cout << dp[s1.size()][s2.size()] << endl;
+
+  return res;
 }
 
 
