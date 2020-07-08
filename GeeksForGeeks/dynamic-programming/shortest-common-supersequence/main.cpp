@@ -45,18 +45,21 @@ string printSolution(int **dp, string s1, string s2, int row, int col){
   if(row == 0) return s2.substr(0, col);
   if(col == 0) return s1.substr(0, row);
 
-  if(s1[row - 1] == s2[col - 1]){
-    if(dp[row - 1][col] >= dp[row][col - 1])
-      return printSolution(dp, s1, s2, row - 1, col);
-    else
-      return printSolution(dp, s1, s2, row, col - 1);
+
+
+  if(dp[row - 1][col] >= dp[row][col - 1]){
+    return (s1[row - 1] == s2[col - 1]) 
+      ? printSolution(dp, s1, s2, row - 1, col)
+      : printSolution(dp, s1, s2, row, col - 1) + s2[col - 1];
   }
 
-  if(dp[row - 1][col] >= dp[row][col - 1])
-    return printSolution(dp, s1, s2, row, col - 1) + s2[col - 1];
-  else
-    return printSolution(dp, s1, s2, row - 1, col) + s1[row - 1];
+
+  return (s1[row - 1] == s2[col - 1]) 
+    ? printSolution(dp, s1, s2, row, col - 1) 
+    : printSolution(dp, s1, s2, row - 1, col) + s1[row - 1];
 }
+
+
 
 string buildShortestSuperSeqDP(string s1, string s2){
 
@@ -88,7 +91,7 @@ string buildShortestSuperSeqDP(string s1, string s2){
   
 
   string res = printSolution(dp, s1, s2, s1.size(), s2.size());
-  // cout << res << endl;
+  cout << res << endl;
   // cout << dp[s1.size()][s2.size()] << endl;
 
   return res;
