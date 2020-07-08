@@ -75,9 +75,54 @@ int solveParenthesis(char *syms, char *ops, int n){
 }
 
 
+struct TDPItem{
+  int T, N, All;
+  TDPItem(): T(0), N(0), All(0){}
+};
+
+int solveParenthesisDP(char *syms, char *ops, int n){
+
+  TDPItem **dp = new TDPItem*[n];
+  for(int i = 0 ; i < n ; i++){
+    dp[i] = new TDPItem[n];
+    memset(dp[i], 0, sizeof(TDPItem) * n);
+  }
 
 
 
+  for(int r = 0 ; r < n ; r++){
+    dp[r][r] = *new TDPItem();
+    dp[r][r].All = 1;
+    dp[r][r].T =  charToBoolean(syms[r]);
+    dp[r][r].N = !charToBoolean(syms[r]);
+  }
+
+
+
+  for(int l = 1 ; l < n ; l++){
+
+    for(int r = 0 ; r < n && r + l < n ; r++){
+      dp[r][r + l] = *new TDPItem(); 
+      
+      for(int i = r ; i < r + l ; i++){
+        dp[r][r + l].All += dp[r][i].All * dp[i + 1][r + l].All;
+
+        dp[r][r + l].T += evaluate(1, 1, ops[i]) ? dp[r][i].T * dp[i + 1][r + l].T : 0;
+        dp[r][r + l].T += evaluate(1, 0, ops[i]) ? dp[r][i].T * dp[i + 1][r + l].N : 0;
+        dp[r][r + l].T += evaluate(0, 1, ops[i]) ? dp[r][i].N * dp[i + 1][r + l].T : 0;
+        dp[r][r + l].T += evaluate(0, 0, ops[i]) ? dp[r][i].N * dp[i + 1][r + l].N : 0;
+
+        dp[r][r + l].N += evaluate(1, 1, ops[i]) ? 0 : dp[r][i].T * dp[i + 1][r + l].T;
+        dp[r][r + l].N += evaluate(1, 0, ops[i]) ? 0 : dp[r][i].T * dp[i + 1][r + l].N;
+        dp[r][r + l].N += evaluate(0, 1, ops[i]) ? 0 : dp[r][i].N * dp[i + 1][r + l].T;
+        dp[r][r + l].N += evaluate(0, 0, ops[i]) ? 0 : dp[r][i].N * dp[i + 1][r + l].N;
+      }
+    }
+  }
+
+
+  return dp[0][n - 1].T;
+}
 
 
 
@@ -98,14 +143,17 @@ int main(int argc, char **argv, char **envp){
 
   n = 3, syms = new char[n]{'T', 'F', 'T'}, ops = new char[n - 1]{'^', '&'}, exp = 2;
   assert(solveParenthesis(syms, ops, n) == exp);
+  assert(solveParenthesisDP(syms, ops, n) == exp);
 
 
   n = 3, syms = new char[n]{'T', 'F', 'F'}, ops = new char[n - 1]{'^', '|'}, exp = 2;
   assert(solveParenthesis(syms, ops, n) == exp);
+  assert(solveParenthesisDP(syms, ops, n) == exp);
 
 
   n = 4, syms = new char[n]{'T', 'T', 'F', 'T'}, ops = new char[n - 1]{'|', '&', '^', }, exp = 4;
   assert(solveParenthesis(syms, ops, n) == exp);
+  assert(solveParenthesisDP(syms, ops, n) == exp);
 
 
 
