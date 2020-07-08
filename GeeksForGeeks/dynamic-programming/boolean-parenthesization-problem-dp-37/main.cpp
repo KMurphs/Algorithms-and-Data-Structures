@@ -23,7 +23,8 @@ bool evaluate(bool a, bool b, char op){
 }
 struct TSol{
   int T, N;
-  TSol(): T(0), N(0){}
+  vector<string> expressions;
+  TSol(): T(0), N(0), expressions(*new vector<string>()){}
 };
 TSol solve(char *syms, char *ops, int n, int start, int end){
   
@@ -31,6 +32,7 @@ TSol solve(char *syms, char *ops, int n, int start, int end){
     TSol res = *new TSol();
     res.T = charToBoolean(syms[start]) ? 1 : 0;
     res.N = 1 - res.T;
+    res.expressions.push_back(*new string(1, syms[start]));
     return res;
   }
 
@@ -50,6 +52,10 @@ TSol solve(char *syms, char *ops, int n, int start, int end){
     sol.N += evaluate(0, 1, ops[i]) ? 0 : r1.N * r2.T;
     sol.N += evaluate(0, 0, ops[i]) ? 0 : r1.N * r2.N;
 
+    for(vector<string>::iterator j = r1.expressions.begin() ; j != r1.expressions.end() ; ++j)
+      for(vector<string>::iterator k = r2.expressions.begin() ; k != r2.expressions.end() ; ++k)
+        sol.expressions.push_back("(" + *j + " " + ops[i] + " " + *k + ")");
+
   }
   return sol;
 }
@@ -60,11 +66,10 @@ int solveParenthesis(char *syms, char *ops, int n){
 
   int sols = 0;
 
-  int solLength = n + (n - 1) + 2*(n - 1);
-  char *solString = new char[solLength];
-  memset(solString, 0, sizeof(char) * solLength);
-
   TSol res = solve(syms, ops, n, 0, n - 1);
+
+  for(vector<string>::iterator it = res.expressions.begin() ; it != res.expressions.end() ; ++it)
+    cout << *it << endl;
 
   return res.T;
 }
@@ -74,12 +79,9 @@ int solveParenthesis(char *syms, char *ops, int n){
 
 
 
-    // string s1, s2;
-    // bool res = evaluate(ops, solve(syms, n, 0, i, s1), solve(syms, n, i + 1, n - 1, s2), i);
-    // if(res){
-    //   sols++;
-    //   cout << "(" << s1 << " " << ops[i] << " " << s2 << ")" << endl;
-    // }
+
+
+
 
 
 
