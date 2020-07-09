@@ -31,33 +31,27 @@ int countChanges(int *changes, int n, int amount){
 
 
 
-string printSolution(int *dp, int currLength){
+string printSolution(pair<int, int> **dp, int *changes, int row, int col, string curr){
 
-  if(currLength == 0){
+  if(row == 0 || col == 0){
+    // cout << curr << endl;
     return "";
   }
-
-
-  int l = 1, r = currLength - 1;
-  bool found = false;
-  while(l <= r){
-    if(dp[currLength] == dp[l] + dp[r]){
-      found = true;
-      break;
-    }
-    l++, r--;
+  if(row == col){
+    cout << changes[row - 1] << ", " << curr << endl;
+    // return "";
   }
 
-  if(!found){
-    return to_string(currLength);
-  }
 
-  return printSolution(dp, l) + ", " + printSolution(dp, r);
+
+  printSolution(dp, changes, row - 1, col, curr);
+  if(dp[row][col].second != 0) printSolution(dp, changes, row, col - changes[row - 1], to_string(changes[row - 1]) + ", " + curr);
+
+  return "";
 }
 
 
-// O(n^2)
-// n entries in dp, each entry is calculated by considering all the entries below it
+
 int countChangesDP(int *changes, int n, int amount){
 
   pair<int, int> **dp = new pair<int, int>*[n + 1];
@@ -83,8 +77,8 @@ int countChangesDP(int *changes, int n, int amount){
   }
 
 
-  // string res = printSolution(dp, rodLength);
-  // cout << res << endl;
+  string res = printSolution(dp, changes, n, amount, "");
+  cout << res << endl;
 
   return dp[n][amount].first + dp[n][amount].second;
 }
@@ -101,7 +95,7 @@ int countChangesDP(int *changes, int n, int amount){
 
 
 
-// https://www.geeksforgeeks.org/cutting-a-rod-dp-13/
+// https://www.geeksforgeeks.org/coin-change-dp-7/
 int main(){
 
     int n, *change, amount, exp;
