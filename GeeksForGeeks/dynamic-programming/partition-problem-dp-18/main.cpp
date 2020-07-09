@@ -6,6 +6,7 @@ using namespace std;
 // Recursive Combinatorial Solution (optimal substructure property - state is localized)
 // Overlapping problems since any branch must generate and consider 
 // the same solution for the all rods of length 3 for example
+// O(n^n)
 int maximizeCutsUtil(int *lengths, int *prices, int n, int currLength, int currPrice){
 
   if(currLength == 0) return currPrice;
@@ -62,13 +63,9 @@ string printSolution(int *dp, int currLength){
   return printSolution(dp, l) + ", " + printSolution(dp, r);
 }
 
-// Altough the overlapping would suggest solving subproblems of 
-// increasing sizes. No recursive relation between these subproblems
-// was found that can be used to build solution from the bottom up
-// Instead, we will change the problem space to 
-// array elmts, vs set of all possible sums of subset 1 
-// The final solution will be borne out of the sum that is closest to
-// the middle of the maximum sum
+
+// O(n^2)
+// n entries in dp, each entry is calculated by considering all the entries below it
 int maximizeCutsDP(int *lengths, int *prices, int n, int rodLength){
 
   int *dp = new int[rodLength + 1];
