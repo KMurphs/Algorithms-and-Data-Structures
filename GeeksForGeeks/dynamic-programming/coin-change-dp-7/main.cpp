@@ -31,28 +31,46 @@ int countChanges(int *changes, int n, int amount){
 
 
 
-string printSolution(pair<int, int> **dp, int *changes, int row, int col, string curr){
+vector<string> printSolution(pair<int, int> **dp, int *changes, int row, int col, string curr){
 
-  if(row == 0 || col == 0){
-    // cout << curr << endl;
-    return "";
+  vector<string> res = *new vector<string>();
+
+  if(row == 0){
+    res.push_back(curr);
+    return res;
   }
+
+  if(col == 0){
+    res.push_back(curr);
+    return res;
+  }
+
   if(row == col){
-    cout << changes[row - 1] << ", " << curr << endl;
-    // return "";
+    // res.push_back(to_string(changes[row - 1]) + ", " + curr);
+    // cout << changes[row - 1] << ", " << curr << endl;
+  }
+  
+  if(dp[row][col].first != 0){
+    vector<string> r1 = printSolution(dp, changes, row - 1, col, curr);
+    for(vector<string>::iterator i = r1.begin() ; i != r1.end() ; ++i)
+      res.push_back(*i);
+  }
+
+  if(dp[row][col].second != 0){
+    vector<string> r2 = printSolution(dp, changes, row, col - changes[row - 1], to_string(changes[row - 1]) + ", " + curr);
+    for(vector<string>::iterator i = r2.begin() ; i != r2.end() ; ++i)
+      res.push_back(*i);
   }
 
 
-
-  printSolution(dp, changes, row - 1, col, curr);
-  if(dp[row][col].second != 0) printSolution(dp, changes, row, col - changes[row - 1], to_string(changes[row - 1]) + ", " + curr);
-
-  return "";
+  return res;
 }
 
 
 
 int countChangesDP(int *changes, int n, int amount){
+
+  sort(changes, changes + n);
 
   pair<int, int> **dp = new pair<int, int>*[n + 1];
   for(int i = 0 ; i < n + 1 ; i++){
@@ -77,8 +95,9 @@ int countChangesDP(int *changes, int n, int amount){
   }
 
 
-  string res = printSolution(dp, changes, n, amount, "");
-  cout << res << endl;
+  vector<string> res = printSolution(dp, changes, n, amount, "");
+  for(vector<string>::iterator i = res.begin() ; i != res.end() ; ++i)
+    cout << *i << endl;
 
   return dp[n][amount].first + dp[n][amount].second;
 }
