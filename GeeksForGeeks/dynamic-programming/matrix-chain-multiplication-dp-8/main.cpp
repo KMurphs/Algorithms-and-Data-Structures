@@ -52,14 +52,6 @@ int reduceTotalOperations(int *mats, int n){
 
 
 
-  // for (int l = 2; l < n; l++){
-  //   for (int i = 0; i < n && i + l < n; i++){
-  //     dp[i][i + l] = min(
-  //       dp[i][i + l - 1] + mats[i] * mats[i + l - 1] * mats[i + l],
-  //       dp[i + 1][i + l] + mats[i + 1] * mats[i] * mats[i + l]
-  //     );
-  //   }
-  // }
 
 
 string printSolution(int **dp, int *mats, int row, int col){
