@@ -49,6 +49,22 @@ int maxProdCutting(int n){
   // return maxProdCuttingUtil(n, 0, 1);
 }
 
+string printSolution(int *dp, int n){
+  
+  if(n == 1)
+    return "1";
+
+
+  for(int j = n - 1 ; j >= 1 ; j-- ){
+  // for(int j = 1 ; j < n ; j++){
+    if(dp[n] == j * dp[n - j])
+      return printSolution(dp, n - j) + ", " + to_string(j);
+    if(dp[n] == j * (n - j))
+      return to_string(j) + ", " + to_string(n - j);
+  }
+  
+
+}
 
 int maxProdCuttingDP(int n){
 
@@ -70,6 +86,9 @@ int maxProdCuttingDP(int n){
 
     }
   }
+
+  string res = printSolution(dp, n);
+  cout << res << endl;
 
   return dp[n];
 }
