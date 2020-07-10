@@ -1,105 +1,26 @@
 #include <bits/stdc++.h>
+#include <unordered_set>
 using namespace std;
 
 
 
-int countChangesUtil(int *changes, int n, int currAmount, int pos){
+bool wordBreakUtil(set<string> dict, string str, int start, int end){
 
-  if(currAmount == 0) return 1;
-  if(currAmount <  0) return 0;
-  if(pos >= n) return 0;
+  if(start == str.size()) return true;
+  if(end   >= str.size()) return false;
 
-  int arrs = 0;
-  for (int i = pos; i < n; i++){
-    arrs += countChangesUtil(changes, n, currAmount - changes[i], i);
+  set<string>::iterator it; 
+  it = dict.find(str.substr(start, end - start + 1)); 
+
+  if(it != dict.end()){
+    return wordBreakUtil(dict, str, end + 1, end + 1);
   }
-  return arrs;
+
+  return wordBreakUtil(dict, str, start, end + 1);
 }
 
-int countChanges(int *changes, int n, int amount){
-  return countChangesUtil(changes, n, amount, 0);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-vector<string> printSolution(pair<int, int> **dp, int *changes, int row, int col, string curr){
-
-  vector<string> res = *new vector<string>();
-
-  if(row == 0){
-    res.push_back(curr);
-    return res;
-  }
-
-  if(col == 0){
-    res.push_back(curr);
-    return res;
-  }
-
-  if(row == col){
-    // res.push_back(to_string(changes[row - 1]) + ", " + curr);
-    // cout << changes[row - 1] << ", " << curr << endl;
-  }
-  
-  if(dp[row][col].first != 0){
-    vector<string> r1 = printSolution(dp, changes, row - 1, col, curr);
-    for(vector<string>::iterator i = r1.begin() ; i != r1.end() ; ++i)
-      res.push_back(*i);
-  }
-
-  if(dp[row][col].second != 0){
-    vector<string> r2 = printSolution(dp, changes, row, col - changes[row - 1], to_string(changes[row - 1]) + ", " + curr);
-    for(vector<string>::iterator i = r2.begin() ; i != r2.end() ; ++i)
-      res.push_back(*i);
-  }
-
-
-  return res;
-}
-
-
-
-int countChangesDP(int *changes, int n, int amount){
-
-  sort(changes, changes + n);
-
-  pair<int, int> **dp = new pair<int, int>*[n + 1];
-  for(int i = 0 ; i < n + 1 ; i++){
-    dp[i] = new pair<int, int>[amount + 1];
-    memset(dp[i], 0 , sizeof(pair<int, int>) * (amount + 1));
-  }
-
-  for(int i = 1 ; i < n + 1 ; i++){
-    dp[i][0].first = 1;
-    dp[i][0].second = 0;
-  }
-
-  for(int i = 1 ; i < n + 1 ; i++){
-    for(int j = 1 ; j < amount + 1 ; j++){
-
-      dp[i][j].first = dp[i - 1][j].first + dp[i - 1][j].second;
-      
-      if(j >= changes[i - 1])
-        dp[i][j].second = dp[i][j - changes[i - 1]].first + dp[i][j - changes[i - 1]].second;
-
-    }
-  }
-
-
-  vector<string> res = printSolution(dp, changes, n, amount, "");
-  for(vector<string>::iterator i = res.begin() ; i != res.end() ; ++i)
-    cout << *i << endl;
-
-  return dp[n][amount].first + dp[n][amount].second;
+bool wordBreak(set<string> dict, string str){
+  return wordBreakUtil(dict, str, 0, 0);
 }
 
 
@@ -109,23 +30,46 @@ int countChangesDP(int *changes, int n, int amount){
 
 
 
-
-
-
-
-
-// https://www.geeksforgeeks.org/coin-change-dp-7/
+// https://www.geeksforgeeks.org/word-break-problem-dp-32/
 int main(){
 
-    int n, *change, amount, exp;
 
-    amount = 4, n = 3, change = new int[n]{ 1, 2, 3 }, exp = 4;
-    assert(countChanges(change, n, amount) == exp);
-    assert(countChangesDP(change, n, amount) == exp);
+    // #include <unordered_set>
+    // unordered_set<int> dict;
 
-    amount = 10, n = 4, change = new int[n]{ 2, 5, 3, 6 }, exp = 5;
-    assert(countChanges(change, n, amount) == exp);
-    assert(countChangesDP(change, n, amount) == exp);
+
+    set<string> dict;
+    dict.insert("mobile");
+    dict.insert("samsung");
+    dict.insert("sam");
+    dict.insert("sung");
+    dict.insert("man");
+    dict.insert("mango");
+    dict.insert("icecream");
+    dict.insert("and");
+    dict.insert("go");
+    dict.insert("i");
+    dict.insert("like");
+    dict.insert("ice");
+    dict.insert("cream");
+
+
+
+    string str;
+    bool exp;
+
+    str = "ilikesamsung", exp = 1;
+    assert(wordBreak(dict, str) == exp);
+    str = "iiiiiiii", exp = 1;
+    assert(wordBreak(dict, str) == exp);
+    str = "", exp = 1;
+    assert(wordBreak(dict, str) == exp);
+    str = "ilikelikeimangoiii", exp = 1;
+    assert(wordBreak(dict, str) == exp);
+    str = "samsungandmango", exp = 1;
+    assert(wordBreak(dict, str) == exp);
+    str = "samsungandmangok", exp = 0;
+    assert(wordBreak(dict, str) == exp);
 
 
     cout << "\n\nProgram is exiting..." << endl; 
