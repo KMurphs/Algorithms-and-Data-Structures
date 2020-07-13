@@ -72,12 +72,12 @@ int stackBoxesForMaxHeight(TBox *arr, int n){
     return (b1.d < b2.d) || ((b1.d == b2.d) && (b1.w < b2.w));
   });
 
-  for(int i = 0 ; i < 3*n ; i++)
-    cout << "(" << newArr[i].h << ", " << newArr[i].d << ", " << newArr[i].w << ")" << "   ";
-  cout << endl;
+  // for(int i = 0 ; i < 3*n ; i++)
+  //   cout << "(" << newArr[i].h << ", " << newArr[i].d << ", " << newArr[i].w << ")" << "   ";
+  // cout << endl;
 
   int h = stackBoxesForMaxHeightUtil2(newArr, 3*n - 1);
-  cout << h << endl;
+  // cout << h << endl;
   return h;
 
 
@@ -89,6 +89,40 @@ int stackBoxesForMaxHeight(TBox *arr, int n){
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+string printSolution(TBox *arr, int n){
+
+
+  int j = n;
+  while(arr[n].d >= arr[j].d || arr[n].w >= arr[j].w) {
+    j--;
+    if(j < 0){
+      break;
+    }
+  }
+
+  string curr = "  (" + to_string(arr[n].h) + ", " + to_string(arr[n].d) + ", " + to_string(arr[n].w) + ")";
+
+  if(j < 0)
+    return curr;
+
+  return printSolution(arr, j) + curr;
+}
 int stackBoxesForMaxHeightDP(TBox *arr, int n){
   
   TBox *newArr = new TBox[3*n];
@@ -106,9 +140,9 @@ int stackBoxesForMaxHeightDP(TBox *arr, int n){
     return (b1.d > b2.d) || ((b1.d == b2.d) && (b1.w > b2.w));
   });
 
-  for(int i = 0 ; i < 3*n ; i++)
-    cout << "(" << newArr[i].h << ", " << newArr[i].d << ", " << newArr[i].w << ")" << "   ";
-  cout << endl;
+  // for(int i = 0 ; i < 3*n ; i++)
+  //   cout << "(" << newArr[i].h << ", " << newArr[i].d << ", " << newArr[i].w << ")" << "   ";
+  // cout << endl;
 
   int *dp = new int[3 * n];
   memset(dp, 0, sizeof(int) * 3 * n);
@@ -126,9 +160,12 @@ int stackBoxesForMaxHeightDP(TBox *arr, int n){
     dp[i] = newArr[i].h + (j < 0 ? 0 : dp[j]);
   }
 
-  for(int i = 0 ; i < 3 * n ; i++)
-    cout << dp[i] << " ";
-  cout << endl;
+  // for(int i = 0 ; i < 3 * n ; i++)
+  //   cout << dp[i] << " ";
+  // cout << endl;
+
+  string res = printSolution(newArr, 3 * n - 1);
+  cout << res << endl;
 
   return dp[3 * n - 1];
 }
