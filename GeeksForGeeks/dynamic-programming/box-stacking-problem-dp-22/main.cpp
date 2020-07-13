@@ -17,47 +17,6 @@ TBox getArrangement(TBox elmt, int r){
 }
 
 
-int stackBoxesForMaxHeightUtil2(TBox *arr, int n, bool *visited, int currD, int currW, TBox *sol, int solIdx){
-
-
-  int maxHeight = 0, tmpHeight;
-  for (int i = 0; i < n; i++){
-    if(!visited[i]){
-      
-      visited[i] = 1;
-      for(int r = 0 ; r < 3 ; r++){
-
-        TBox tmp = getArrangement(arr[i], r);
-        if(currD >= tmp.d && currW >= tmp.w && (currD*currW < tmp.d*tmp.w)){
-          tmpHeight = stackBoxesForMaxHeightUtil2(arr, n, visited, tmp.d, tmp.w, sol, solIdx + 1) + tmp.h;
-          
-          if(tmpHeight > maxHeight){
-            maxHeight = tmpHeight;
-            sol[solIdx] = tmp;
-          }
-        }
-
-      }
-      visited[i] = 0;
-
-    }
-  }
-  return maxHeight;
-}
-int stackBoxesForMaxHeight2(TBox *arr, int n){
-  bool *visited = new bool[n];
-  memset(visited, 0, sizeof(bool) * n);
-  TBox *sol = new TBox[n];
-  memset(visited, 0, sizeof(TBox) * n);
-  int h = stackBoxesForMaxHeightUtil2(arr, n, visited, INT_MAX, INT_MAX, sol, 0);
-  for(int i = 0 ; i < n ; i++)
-    cout << "(" << sol[i].h << ", " << sol[i].d << ", " << sol[i].w << ")"; 
-  return h;
-}
-
-
-
-
 
 int stackBoxesForMaxHeightUtil(TBox *arr, int n, bool *visited, int currD, int currW){
 
@@ -77,8 +36,6 @@ int stackBoxesForMaxHeightUtil(TBox *arr, int n, bool *visited, int currD, int c
 
     }
   }
-
-
 
   return maxHeight;
 }
@@ -100,8 +57,8 @@ int stackBoxesForMaxHeight(TBox *arr, int n){
 
   bool *visited = new bool[3*n];
   memset(visited, 0, sizeof(bool) * 3*n);
-  int h = stackBoxesForMaxHeightUtil(newArr, 3*n, visited, maxNum + 1, maxNum + 1);
-  return h;
+  
+  return stackBoxesForMaxHeightUtil(newArr, 3*n, visited, maxNum + 1, maxNum + 1);;
 }
 
 
