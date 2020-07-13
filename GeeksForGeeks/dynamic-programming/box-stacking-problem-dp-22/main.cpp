@@ -89,6 +89,51 @@ int stackBoxesForMaxHeight(TBox *arr, int n){
 }
 
 
+int stackBoxesForMaxHeightDP(TBox *arr, int n){
+  
+  TBox *newArr = new TBox[3*n];
+  int maxNum = 0;
+  for(int i = 0 ; i < n ; i++){
+    for(int r = 0 ; r < 3 ; r++){
+      newArr[3*i + r] = getArrangement(arr[i], r);
+      if(maxNum < newArr[3*i + r].h){
+        maxNum = newArr[3*i + r].h;
+      }
+    }
+  }
+
+  sort(newArr, newArr + (3*n), [](const TBox b1, const TBox b2) {
+    return (b1.d > b2.d) || ((b1.d == b2.d) && (b1.w > b2.w));
+  });
+
+  for(int i = 0 ; i < 3*n ; i++)
+    cout << "(" << newArr[i].h << ", " << newArr[i].d << ", " << newArr[i].w << ")" << "   ";
+  cout << endl;
+
+  int *dp = new int[3 * n];
+  memset(dp, 0, sizeof(int) * 3 * n);
+
+  dp[0] = newArr[0].h;
+  for(int i = 1 ; i < 3 * n ; i++){
+    int j = i;
+    while(newArr[i].d >= newArr[j].d || newArr[i].w >= newArr[j].w) {
+      j--;
+      if(j < 0){
+        break;
+      }
+    }
+
+    dp[i] = newArr[i].h + (j < 0 ? 0 : dp[j]);
+  }
+
+  for(int i = 0 ; i < 3 * n ; i++)
+    cout << dp[i] << " ";
+  cout << endl;
+
+  return dp[3 * n - 1];
+}
+
+
 
 
 
@@ -100,6 +145,7 @@ int main(){
 
     n = 4, arr = new TBox[n]{{4, 6, 7}, {1, 2, 3}, {4, 5, 6}, {10, 12, 32}}, exp = 60;
     assert(stackBoxesForMaxHeight(arr, n) == exp);
+    assert(stackBoxesForMaxHeightDP(arr, n) == exp);
 
 
 
