@@ -8,6 +8,7 @@ Both the left and right subtrees must also be binary search trees.
  
 
 Example 1:
+![Example](./Example.png)
 ```
 Input: root = [2,1,3]
 Output: true
