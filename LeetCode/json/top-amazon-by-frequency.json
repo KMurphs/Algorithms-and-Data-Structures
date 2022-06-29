@@ -1,0 +1,410 @@
+[
+    {
+        "id": 1,
+        "link": "https://leetcode.com/problems/binary-search/",
+        "problem": "704. Binary Search",
+        "acceptance": "55.2%",
+        "difficulty": "Easy",
+        "frequency": "77.2301%"
+    },
+    {
+        "id": 2,
+        "link": "https://leetcode.com/problems/two-sum",
+        "problem": "1. Two Sum",
+        "acceptance": "48.4%",
+        "difficulty": "Easy",
+        "frequency": "100%"
+    },
+    {
+        "id": 3,
+        "link": "https://leetcode.com/problems/lru-cache",
+        "problem": "146. LRU Cache",
+        "acceptance": "39.6%",
+        "difficulty": "Medium",
+        "frequency": "99.32%"
+    },
+    {
+        "id": 4,
+        "link": "https://leetcode.com/problems/merge-intervals",
+        "problem": "56. Merge Intervals",
+        "acceptance": "44.7%",
+        "difficulty": "Medium",
+        "frequency": "98.64%"
+    },
+    {
+        "id": 5,
+        "link": "https://leetcode.com/problems/trapping-rain-water",
+        "problem": "42. Trapping Rain Water",
+        "acceptance": "56.1%",
+        "difficulty": "Hard",
+        "frequency": "97.4929%"
+    },
+    {
+        "id": 6,
+        "link": "https://leetcode.com/problems/number-of-islands",
+        "problem": "200. Number of Islands",
+        "acceptance": "53.6%",
+        "difficulty": "Medium",
+        "frequency": "260px"
+    },
+    {
+        "id": 7,
+        "link": "https://leetcode.com/problems/median-of-two-sorted-arrays",
+        "problem": "4. Median of Two Sorted Arrays",
+        "acceptance": "33.9%",
+        "difficulty": "Hard",
+        "frequency": "95.4528%"
+    },
+    {
+        "id": 8,
+        "link": "https://leetcode.com/problems/design-in-memory-file-system",
+        "problem": "588. Design In-Memory File System",
+        "acceptance": "48.3%",
+        "difficulty": "Hard",
+        "frequency": "91.9804%"
+    },
+    {
+        "id": 9,
+        "link": "https://leetcode.com/problems/meeting-rooms-ii",
+        "problem": "253. Meeting Rooms II",
+        "acceptance": "49.5%",
+        "difficulty": "Medium",
+        "frequency": "90.3311%"
+    },
+    {
+        "id": 10,
+        "link": "https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string",
+        "problem": "828. Count Unique Characters of All Substrings of a Given String",
+        "acceptance": "49.4%",
+        "difficulty": "Hard",
+        "frequency": "85.8856%"
+    },
+    {
+        "id": 11,
+        "link": "https://leetcode.com/problems/merge-k-sorted-lists",
+        "problem": "23. Merge k Sorted Lists",
+        "acceptance": "46.8%",
+        "difficulty": "Hard",
+        "frequency": "84.6683%"
+    },
+    {
+        "id": 12,
+        "link": "https://leetcode.com/problems/word-search",
+        "problem": "79. Word Search",
+        "acceptance": "39.5%",
+        "difficulty": "Medium",
+        "frequency": "84.056%"
+    },
+    {
+        "id": 13,
+        "link": "https://leetcode.com/problems/k-closest-points-to-origin",
+        "problem": "973. K Closest Points to Origin",
+        "acceptance": "66.0%",
+        "difficulty": "Medium",
+        "frequency": "83.2568%"
+    },
+    {
+        "id": 14,
+        "link": "https://leetcode.com/problems/group-anagrams",
+        "problem": "49. Group Anagrams",
+        "acceptance": "63.8%",
+        "difficulty": "Medium",
+        "frequency": "82.7685%"
+    },
+    {
+        "id": 15,
+        "link": "https://leetcode.com/problems/integer-to-english-words",
+        "problem": "273. Integer to English Words",
+        "acceptance": "29.5%",
+        "difficulty": "Hard",
+        "frequency": "82.6607%"
+    },
+    {
+        "id": 16,
+        "link": "https://leetcode.com/problems/word-search-ii",
+        "problem": "212. Word Search II",
+        "acceptance": "38.1%",
+        "difficulty": "Hard",
+        "frequency": "81.2449%"
+    },
+    {
+        "id": 17,
+        "link": "https://leetcode.com/problems/sliding-window-maximum",
+        "problem": "239. Sliding Window Maximum",
+        "acceptance": "46.2%",
+        "difficulty": "Hard",
+        "frequency": "80.7908%"
+    },
+    {
+        "id": 18,
+        "link": "https://leetcode.com/problems/count-binary-substrings",
+        "problem": "696. Count Binary Substrings",
+        "acceptance": "64.6%",
+        "difficulty": "Easy",
+        "frequency": "80.3492%"
+    },
+    {
+        "id": 19,
+        "link": "https://leetcode.com/problems/word-ladder",
+        "problem": "127. Word Ladder",
+        "acceptance": "35.2%",
+        "difficulty": "Hard",
+        "frequency": "78.9586%"
+    },
+    {
+        "id": 20,
+        "link": "https://leetcode.com/problems/search-suggestions-system",
+        "problem": "1268. Search Suggestions System",
+        "acceptance": "65.5%",
+        "difficulty": "Medium",
+        "frequency": "76.0749%"
+    },
+    {
+        "id": 21,
+        "link": "https://leetcode.com/problems/course-schedule-ii",
+        "problem": "210. Course Schedule II",
+        "acceptance": "46.3%",
+        "difficulty": "Medium",
+        "frequency": "72.7969%"
+    },
+    {
+        "id": 22,
+        "link": "https://leetcode.com/problems/analyze-user-website-visit-pattern",
+        "problem": "1152. Analyze User Website Visit Pattern",
+        "acceptance": "43.5%",
+        "difficulty": "Medium",
+        "frequency": "72.1654%"
+    },
+    {
+        "id": 23,
+        "link": "https://leetcode.com/problems/asteroid-collision",
+        "problem": "735. Asteroid Collision",
+        "acceptance": "44.4%",
+        "difficulty": "Medium",
+        "frequency": "71.7943%"
+    },
+    {
+        "id": 24,
+        "link": "https://leetcode.com/problems/reorder-data-in-log-files",
+        "problem": "937. Reorder Data in Log Files",
+        "acceptance": "55.9%",
+        "difficulty": "Easy",
+        "frequency": "69.1608%"
+    },
+    {
+        "id": 25,
+        "link": "https://leetcode.com/problems/flip-string-to-monotone-increasing",
+        "problem": "926. Flip String to Monotone Increasing",
+        "acceptance": "58.5%",
+        "difficulty": "Medium",
+        "frequency": "68.6438%"
+    },
+    {
+        "id": 26,
+        "link": "https://leetcode.com/problems/find-median-from-data-stream",
+        "problem": "295. Find Median from Data Stream",
+        "acceptance": "50.1%",
+        "difficulty": "Hard",
+        "frequency": "68.507%"
+    },
+    {
+        "id": 27,
+        "link": "https://leetcode.com/problems/first-unique-character-in-a-string",
+        "problem": "387. First Unique Character in a String",
+        "acceptance": "56.9%",
+        "difficulty": "Easy",
+        "frequency": "66.7965%"
+    },
+    {
+        "id": 28,
+        "link": "https://leetcode.com/problems/integer-to-roman",
+        "problem": "12. Integer to Roman",
+        "acceptance": "59.2%",
+        "difficulty": "Medium",
+        "frequency": "66.7206%"
+    },
+    {
+        "id": 29,
+        "link": "https://leetcode.com/problems/rotting-oranges",
+        "problem": "994. Rotting Oranges",
+        "acceptance": "51.6%",
+        "difficulty": "Medium",
+        "frequency": "65.872%"
+    },
+    {
+        "id": 30,
+        "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal",
+        "problem": "103. Binary Tree Zigzag Level Order Traversal",
+        "acceptance": "53.3%",
+        "difficulty": "Medium",
+        "frequency": "61.7235%"
+    },
+    {
+        "id": 31,
+        "link": "https://leetcode.com/problems/snakes-and-ladders",
+        "problem": "909. Snakes and Ladders",
+        "acceptance": "40.4%",
+        "difficulty": "Medium",
+        "frequency": "60.2545%"
+    },
+    {
+        "id": 32,
+        "link": "https://leetcode.com/problems/maximum-units-on-a-truck",
+        "problem": "1710. Maximum Units on a Truck",
+        "acceptance": "72.1%",
+        "difficulty": "Easy",
+        "frequency": "58.8973%"
+    },
+    {
+        "id": 33,
+        "link": "https://leetcode.com/problems/range-addition",
+        "problem": "370. Range Addition",
+        "acceptance": "69.1%",
+        "difficulty": "Medium",
+        "frequency": "57.27%"
+    },
+    {
+        "id": 34,
+        "link": "https://leetcode.com/problems/design-tic-tac-toe",
+        "problem": "348. Design Tic-Tac-Toe",
+        "acceptance": "57.2%",
+        "difficulty": "Medium",
+        "frequency": "56.3278%"
+    },
+    {
+        "id": 35,
+        "link": "https://leetcode.com/problems/strong-password-checker",
+        "problem": "420. Strong Password Checker",
+        "acceptance": "14.1%",
+        "difficulty": "Hard",
+        "frequency": "55.8586%"
+    },
+    {
+        "id": 36,
+        "link": "https://leetcode.com/problems/sum-of-subarray-ranges",
+        "problem": "2104. Sum of Subarray Ranges",
+        "acceptance": "60.0%",
+        "difficulty": "Medium",
+        "frequency": "55.715%"
+    },
+    {
+        "id": 37,
+        "link": "https://leetcode.com/problems/sum-of-subarray-minimums",
+        "problem": "907. Sum of Subarray Minimums",
+        "acceptance": "33.7%",
+        "difficulty": "Medium",
+        "frequency": "55.6473%"
+    },
+    {
+        "id": 38,
+        "link": "https://leetcode.com/problems/design-search-autocomplete-system",
+        "problem": "642. Design Search Autocomplete System",
+        "acceptance": "48.1%",
+        "difficulty": "Hard",
+        "frequency": "55.6331%"
+    },
+    {
+        "id": 39,
+        "link": "https://leetcode.com/problems/the-kth-factor-of-n",
+        "problem": "1492. The kth Factor of n",
+        "acceptance": "62.1%",
+        "difficulty": "Medium",
+        "frequency": "53.2872%"
+    },
+    {
+        "id": 40,
+        "link": "https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game",
+        "problem": "1275. Find Winner on a Tic Tac Toe Game",
+        "acceptance": "54.9%",
+        "difficulty": "Easy",
+        "frequency": "52.9244%"
+    },
+    {
+        "id": 41,
+        "link": "https://leetcode.com/problems/concatenated-words",
+        "problem": "472. Concatenated Words",
+        "acceptance": "42.6%",
+        "difficulty": "Hard",
+        "frequency": "51.8937%"
+    },
+    {
+        "id": 42,
+        "link": "https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product",
+        "problem": "1567. Maximum Length of Subarray With Positive Product",
+        "acceptance": "42.7%",
+        "difficulty": "Medium",
+        "frequency": "45.1982%"
+    },
+    {
+        "id": 43,
+        "link": "https://leetcode.com/problems/boundary-of-binary-tree",
+        "problem": "545. Boundary of Binary Tree",
+        "acceptance": "43.0%",
+        "difficulty": "Medium",
+        "frequency": "44.5441%"
+    },
+    {
+        "id": 44,
+        "link": "https://leetcode.com/problems/sell-diminishing-valued-colored-balls",
+        "problem": "1648. Sell Diminishing-Valued Colored Balls",
+        "acceptance": "30.7%",
+        "difficulty": "Medium",
+        "frequency": "36.5343%"
+    },
+    {
+        "id": 45,
+        "link": "https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together",
+        "problem": "1151. Minimum Swaps to Group All 1's Together",
+        "acceptance": "59.4%",
+        "difficulty": "Medium",
+        "frequency": "35.6735%"
+    },
+    {
+        "id": 46,
+        "link": "https://leetcode.com/problems/minimum-cost-to-connect-sticks",
+        "problem": "1167. Minimum Cost to Connect Sticks",
+        "acceptance": "66.9%",
+        "difficulty": "Medium",
+        "frequency": "31.5509%"
+    },
+    {
+        "id": 47,
+        "link": "https://leetcode.com/problems/build-binary-expression-tree-from-infix-expression",
+        "problem": "1597. Build Binary Expression Tree From Infix Expression",
+        "acceptance": "59.5%",
+        "difficulty": "Hard",
+        "frequency": "27.6788%"
+    },
+    {
+        "id": 48,
+        "link": "https://leetcode.com/problems/design-an-expression-tree-with-evaluate-function",
+        "problem": "1628. Design an Expression Tree With Evaluate Function",
+        "acceptance": "81.6%",
+        "difficulty": "Medium",
+        "frequency": "27.4624%"
+    },
+    {
+        "id": 49,
+        "link": "https://leetcode.com/problems/kill-process",
+        "problem": "582. Kill Process",
+        "acceptance": "66.7%",
+        "difficulty": "Medium",
+        "frequency": "27.2559%"
+    },
+    {
+        "id": 50,
+        "link": "https://leetcode.com/problems/shortest-path-to-get-food",
+        "problem": "1730. Shortest Path to Get Food",
+        "acceptance": "54.3%",
+        "difficulty": "Medium",
+        "frequency": "26.1287%"
+    },
+    {
+        "id": 51,
+        "link": "https://leetcode.com/problems/sum-of-subsequence-widths",
+        "problem": "891. Sum of Subsequence Widths",
+        "acceptance": "35.3%",
+        "difficulty": "Hard",
+        "frequency": "18.5319%"
+    }
+]

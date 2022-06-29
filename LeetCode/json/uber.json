@@ -1,0 +1,99 @@
+[
+    {
+        "title": "Arrays and Strings",
+        "problems": [
+            "Two Sum",
+            "Find First and Last Position of Element in Sorted Array",
+            "Group Anagrams",
+            "Text Justification",
+            "Minimum Window Substring",
+            "Validate IP Address"
+        ]
+    },
+    {
+        "title": "Linked Lists",
+        "problems": [
+            "Merge Two Sorted Lists",
+            "Merge k Sorted Lists"
+        ]
+    },
+    {
+        "title": "Trees and Graphs",
+        "problems": [
+            "Reconstruct Itinerary",
+            "Evaluate Division",
+            "Find Duplicate Subtrees",
+            "Print Binary Tree",
+            "Serialize and Deserialize N-ary Tree"
+        ]
+    },
+    {
+        "title": "Heaps, Queues, and, Stacks",
+        "problems": [
+            "Trapping Rain Water",
+            "Basic Calculator",
+            "Meeting Rooms II",
+            "Task Scheduler",
+            "Exclusive Time of Functions",
+            "Employee Free Time"
+        ]
+    },
+    {
+        "title": "Recursion and Backtracking",
+        "problems": [
+            "Letter Combinations of a Phone Number",
+            "Subsets"
+        ]
+    },
+    {
+        "title": "Sorting and Searching",
+        "problems": [
+            "Merge Intervals",
+            "Word Ladder II",
+            "Number of Islands",
+            "Walls and Gates",
+            "Remove Invalid Parentheses",
+            "24 Game",
+            "Max Area of Island",
+            "Bus Routes",
+            "Shortest Bridge"
+        ]
+    },
+    {
+        "title": "Dynamic Programming",
+        "problems": [
+            "Word Break",
+            "Perfect Squares",
+            "Russian Doll Envelopes",
+            "Maximum Vacation Days",
+            "Cherry Pickup"
+        ]
+    },
+    {
+        "title": "Design",
+        "problems": [
+            "LRU Cache",
+            "Serialize and Deserialize Binary Tree",
+            "Moving Average from Data Stream",
+            "Design Snake Game",
+            "Logger Rate Limiter",
+            "Design Hit Counter",
+            "Insert Delete GetRandom O(1) - Duplicates allowed",
+            "Design Search Autocomplete System"
+        ]
+    },
+    {
+        "title": "Others",
+        "problems": [
+            "Valid Sudoku",
+            "Candy",
+            "Fraction to Recurring Decimal",
+            "Number of Islands II",
+            "Random Pick Index",
+            "Encode and Decode TinyURL",
+            "Solve the Equation",
+            "Construct Quad Tree",
+            "Random Pick with Weight"
+        ]
+    }
+]

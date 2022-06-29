@@ -1,0 +1,802 @@
+[
+    {
+        "id": 1,
+        "link": "https://leetcode.com/problems/count-vowels-permutation",
+        "problem": "1220. Count Vowels Permutation",
+        "acceptance": "56.3%",
+        "difficulty": "Hard",
+        "frequency": "48.4736%"
+    },
+    {
+        "id": 2,
+        "link": "https://leetcode.com/problems/word-ladder-ii",
+        "problem": "126. Word Ladder II",
+        "acceptance": "26.8%",
+        "difficulty": "Hard",
+        "frequency": "48.4134%"
+    },
+    {
+        "id": 3,
+        "link": "https://leetcode.com/problems/delete-duplicate-folders-in-system",
+        "problem": "1948. Delete Duplicate Folders in System",
+        "acceptance": "58.8%",
+        "difficulty": "Hard",
+        "frequency": "48.3584%"
+    },
+    {
+        "id": 4,
+        "link": "https://leetcode.com/problems/perfect-squares",
+        "problem": "279. Perfect Squares",
+        "acceptance": "51.7%",
+        "difficulty": "Medium",
+        "frequency": "48.1067%"
+    },
+    {
+        "id": 5,
+        "link": "https://leetcode.com/problems/distribute-coins-in-binary-tree",
+        "problem": "979. Distribute Coins in Binary Tree",
+        "acceptance": "71.4%",
+        "difficulty": "Medium",
+        "frequency": "48.0727%"
+    },
+    {
+        "id": 6,
+        "link": "https://leetcode.com/problems/kth-smallest-number-in-multiplication-table",
+        "problem": "668. Kth Smallest Number in Multiplication Table",
+        "acceptance": "50.9%",
+        "difficulty": "Hard",
+        "frequency": "260px"
+    },
+    {
+        "id": 7,
+        "link": "https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique",
+        "problem": "1647. Minimum Deletions to Make Character Frequencies Unique",
+        "acceptance": "56.4%",
+        "difficulty": "Medium",
+        "frequency": "47.7739%"
+    },
+    {
+        "id": 8,
+        "link": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node",
+        "problem": "116. Populating Next Right Pointers in Each Node",
+        "acceptance": "56.5%",
+        "difficulty": "Medium",
+        "frequency": "47.7231%"
+    },
+    {
+        "id": 9,
+        "link": "https://leetcode.com/problems/maximum-number-of-points-with-cost",
+        "problem": "1937. Maximum Number of Points with Cost",
+        "acceptance": "35.1%",
+        "difficulty": "Medium",
+        "frequency": "47.7212%"
+    },
+    {
+        "id": 10,
+        "link": "https://leetcode.com/problems/recover-binary-search-tree",
+        "problem": "99. Recover Binary Search Tree",
+        "acceptance": "46.1%",
+        "difficulty": "Medium",
+        "frequency": "47.716%"
+    },
+    {
+        "id": 11,
+        "link": "https://leetcode.com/problems/different-ways-to-add-parentheses",
+        "problem": "241. Different Ways to Add Parentheses",
+        "acceptance": "61.3%",
+        "difficulty": "Medium",
+        "frequency": "47.3258%"
+    },
+    {
+        "id": 12,
+        "link": "https://leetcode.com/problems/minimum-time-to-make-rope-colorful",
+        "problem": "1578. Minimum Time to Make Rope Colorful",
+        "acceptance": "61.3%",
+        "difficulty": "Medium",
+        "frequency": "47.2825%"
+    },
+    {
+        "id": 13,
+        "link": "https://leetcode.com/problems/add-bold-tag-in-string",
+        "problem": "616. Add Bold Tag in String",
+        "acceptance": "48.0%",
+        "difficulty": "Medium",
+        "frequency": "47.0926%"
+    },
+    {
+        "id": 14,
+        "link": "https://leetcode.com/problems/sliding-puzzle",
+        "problem": "773. Sliding Puzzle",
+        "acceptance": "63.0%",
+        "difficulty": "Hard",
+        "frequency": "47.054%"
+    },
+    {
+        "id": 15,
+        "link": "https://leetcode.com/problems/palindromic-substrings",
+        "problem": "647. Palindromic Substrings",
+        "acceptance": "64.4%",
+        "difficulty": "Medium",
+        "frequency": "46.8235%"
+    },
+    {
+        "id": 16,
+        "link": "https://leetcode.com/problems/max-points-on-a-line",
+        "problem": "149. Max Points on a Line",
+        "acceptance": "20.2%",
+        "difficulty": "Hard",
+        "frequency": "46.6437%"
+    },
+    {
+        "id": 17,
+        "link": "https://leetcode.com/problems/break-a-palindrome",
+        "problem": "1328. Break a Palindrome",
+        "acceptance": "52.4%",
+        "difficulty": "Medium",
+        "frequency": "46.5458%"
+    },
+    {
+        "id": 18,
+        "link": "https://leetcode.com/problems/missing-number",
+        "problem": "268. Missing Number",
+        "acceptance": "59.1%",
+        "difficulty": "Easy",
+        "frequency": "46.4613%"
+    },
+    {
+        "id": 19,
+        "link": "https://leetcode.com/problems/palindrome-partitioning",
+        "problem": "131. Palindrome Partitioning",
+        "acceptance": "59.0%",
+        "difficulty": "Medium",
+        "frequency": "46.2681%"
+    },
+    {
+        "id": 20,
+        "link": "https://leetcode.com/problems/remove-nth-node-from-end-of-list",
+        "problem": "19. Remove Nth Node From End of List",
+        "acceptance": "38.1%",
+        "difficulty": "Medium",
+        "frequency": "46.2359%"
+    },
+    {
+        "id": 21,
+        "link": "https://leetcode.com/problems/subarrays-with-k-different-integers",
+        "problem": "992. Subarrays with K Different Integers",
+        "acceptance": "53.3%",
+        "difficulty": "Hard",
+        "frequency": "46.2074%"
+    },
+    {
+        "id": 22,
+        "link": "https://leetcode.com/problems/find-the-celebrity",
+        "problem": "277. Find the Celebrity",
+        "acceptance": "46.3%",
+        "difficulty": "Medium",
+        "frequency": "46.1325%"
+    },
+    {
+        "id": 23,
+        "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii",
+        "problem": "123. Best Time to Buy and Sell Stock III",
+        "acceptance": "42.9%",
+        "difficulty": "Hard",
+        "frequency": "46.0935%"
+    },
+    {
+        "id": 24,
+        "link": "https://leetcode.com/problems/4sum-ii",
+        "problem": "454. 4Sum II",
+        "acceptance": "57.0%",
+        "difficulty": "Medium",
+        "frequency": "46.0482%"
+    },
+    {
+        "id": 25,
+        "link": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal",
+        "problem": "1008. Construct Binary Search Tree from Preorder Traversal",
+        "acceptance": "80.1%",
+        "difficulty": "Medium",
+        "frequency": "45.956%"
+    },
+    {
+        "id": 26,
+        "link": "https://leetcode.com/problems/minimum-area-rectangle",
+        "problem": "939. Minimum Area Rectangle",
+        "acceptance": "53.5%",
+        "difficulty": "Medium",
+        "frequency": "45.9296%"
+    },
+    {
+        "id": 27,
+        "link": "https://leetcode.com/problems/maximum-earnings-from-taxi",
+        "problem": "2008. Maximum Earnings From Taxi",
+        "acceptance": "42.6%",
+        "difficulty": "Medium",
+        "frequency": "45.8585%"
+    },
+    {
+        "id": 28,
+        "link": "https://leetcode.com/problems/coin-change-2",
+        "problem": "518. Coin Change 2",
+        "acceptance": "57.1%",
+        "difficulty": "Medium",
+        "frequency": "45.83%"
+    },
+    {
+        "id": 29,
+        "link": "https://leetcode.com/problems/shortest-word-distance",
+        "problem": "243. Shortest Word Distance",
+        "acceptance": "64.2%",
+        "difficulty": "Easy",
+        "frequency": "45.8216%"
+    },
+    {
+        "id": 30,
+        "link": "https://leetcode.com/problems/count-primes",
+        "problem": "204. Count Primes",
+        "acceptance": "33.0%",
+        "difficulty": "Medium",
+        "frequency": "45.7904%"
+    },
+    {
+        "id": 31,
+        "link": "https://leetcode.com/problems/partition-to-k-equal-sum-subsets",
+        "problem": "698. Partition to K Equal Sum Subsets",
+        "acceptance": "44.5%",
+        "difficulty": "Medium",
+        "frequency": "45.6001%"
+    },
+    {
+        "id": 32,
+        "link": "https://leetcode.com/problems/delete-nodes-and-return-forest",
+        "problem": "1110. Delete Nodes And Return Forest",
+        "acceptance": "69.2%",
+        "difficulty": "Medium",
+        "frequency": "45.5965%"
+    },
+    {
+        "id": 33,
+        "link": "https://leetcode.com/problems/cherry-pickup",
+        "problem": "741. Cherry Pickup",
+        "acceptance": "36.2%",
+        "difficulty": "Hard",
+        "frequency": "45.5463%"
+    },
+    {
+        "id": 34,
+        "link": "https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero",
+        "problem": "1611. Minimum One Bit Operations to Make Integers Zero",
+        "acceptance": "62.2%",
+        "difficulty": "Hard",
+        "frequency": "45.513%"
+    },
+    {
+        "id": 35,
+        "link": "https://leetcode.com/problems/build-array-from-permutation",
+        "problem": "1920. Build Array from Permutation",
+        "acceptance": "91.7%",
+        "difficulty": "Easy",
+        "frequency": "45.4256%"
+    },
+    {
+        "id": 36,
+        "link": "https://leetcode.com/problems/last-stone-weight",
+        "problem": "1046. Last Stone Weight",
+        "acceptance": "63.1%",
+        "difficulty": "Easy",
+        "frequency": "45.3569%"
+    },
+    {
+        "id": 37,
+        "link": "https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product",
+        "problem": "1567. Maximum Length of Subarray With Positive Product",
+        "acceptance": "42.7%",
+        "difficulty": "Medium",
+        "frequency": "45.1982%"
+    },
+    {
+        "id": 38,
+        "link": "https://leetcode.com/problems/count-and-say",
+        "problem": "38. Count and Say",
+        "acceptance": "48.4%",
+        "difficulty": "Medium",
+        "frequency": "45.1457%"
+    },
+    {
+        "id": 39,
+        "link": "https://leetcode.com/problems/minimum-absolute-difference",
+        "problem": "1200. Minimum Absolute Difference",
+        "acceptance": "69.9%",
+        "difficulty": "Easy",
+        "frequency": "44.9957%"
+    },
+    {
+        "id": 40,
+        "link": "https://leetcode.com/problems/squares-of-a-sorted-array",
+        "problem": "977. Squares of a Sorted Array",
+        "acceptance": "71.6%",
+        "difficulty": "Easy",
+        "frequency": "44.94%"
+    },
+    {
+        "id": 41,
+        "link": "https://leetcode.com/problems/contains-duplicate-ii",
+        "problem": "219. Contains Duplicate II",
+        "acceptance": "40.6%",
+        "difficulty": "Easy",
+        "frequency": "44.6638%"
+    },
+    {
+        "id": 42,
+        "link": "https://leetcode.com/problems/search-a-2d-matrix-ii",
+        "problem": "240. Search a 2D Matrix II",
+        "acceptance": "48.1%",
+        "difficulty": "Medium",
+        "frequency": "44.658%"
+    },
+    {
+        "id": 43,
+        "link": "https://leetcode.com/problems/number-of-digit-one",
+        "problem": "233. Number of Digit One",
+        "acceptance": "33.4%",
+        "difficulty": "Hard",
+        "frequency": "44.636%"
+    },
+    {
+        "id": 44,
+        "link": "https://leetcode.com/problems/jump-game-iv",
+        "problem": "1345. Jump Game IV",
+        "acceptance": "44.4%",
+        "difficulty": "Hard",
+        "frequency": "44.632%"
+    },
+    {
+        "id": 45,
+        "link": "https://leetcode.com/problems/boundary-of-binary-tree",
+        "problem": "545. Boundary of Binary Tree",
+        "acceptance": "43.0%",
+        "difficulty": "Medium",
+        "frequency": "44.5441%"
+    },
+    {
+        "id": 46,
+        "link": "https://leetcode.com/problems/implement-trie-prefix-tree",
+        "problem": "208. Implement Trie (Prefix Tree)",
+        "acceptance": "57.7%",
+        "difficulty": "Medium",
+        "frequency": "44.5082%"
+    },
+    {
+        "id": 47,
+        "link": "https://leetcode.com/problems/design-a-leaderboard",
+        "problem": "1244. Design A Leaderboard",
+        "acceptance": "68.1%",
+        "difficulty": "Medium",
+        "frequency": "44.5033%"
+    },
+    {
+        "id": 48,
+        "link": "https://leetcode.com/problems/merge-bsts-to-create-single-bst",
+        "problem": "1932. Merge BSTs to Create Single BST",
+        "acceptance": "34.8%",
+        "difficulty": "Hard",
+        "frequency": "44.2991%"
+    },
+    {
+        "id": 49,
+        "link": "https://leetcode.com/problems/ip-to-cidr",
+        "problem": "751. IP to CIDR",
+        "acceptance": "55.1%",
+        "difficulty": "Medium",
+        "frequency": "44.1658%"
+    },
+    {
+        "id": 50,
+        "link": "https://leetcode.com/problems/verifying-an-alien-dictionary",
+        "problem": "953. Verifying an Alien Dictionary",
+        "acceptance": "52.5%",
+        "difficulty": "Easy",
+        "frequency": "44.1505%"
+    },
+    {
+        "id": 51,
+        "link": "https://leetcode.com/problems/task-scheduler",
+        "problem": "621. Task Scheduler",
+        "acceptance": "54.3%",
+        "difficulty": "Medium",
+        "frequency": "43.9371%"
+    },
+    {
+        "id": 52,
+        "link": "https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram",
+        "problem": "1347. Minimum Number of Steps to Make Two Strings Anagram",
+        "acceptance": "76.2%",
+        "difficulty": "Medium",
+        "frequency": "43.8959%"
+    },
+    {
+        "id": 53,
+        "link": "https://leetcode.com/problems/find-and-replace-in-string",
+        "problem": "833. Find And Replace in String",
+        "acceptance": "54.3%",
+        "difficulty": "Medium",
+        "frequency": "43.8042%"
+    },
+    {
+        "id": 54,
+        "link": "https://leetcode.com/problems/next-greater-element-i",
+        "problem": "496. Next Greater Element I",
+        "acceptance": "69.8%",
+        "difficulty": "Easy",
+        "frequency": "43.7603%"
+    },
+    {
+        "id": 55,
+        "link": "https://leetcode.com/problems/find-duplicate-subtrees",
+        "problem": "652. Find Duplicate Subtrees",
+        "acceptance": "55.6%",
+        "difficulty": "Medium",
+        "frequency": "43.569%"
+    },
+    {
+        "id": 56,
+        "link": "https://leetcode.com/problems/unique-paths-ii",
+        "problem": "63. Unique Paths II",
+        "acceptance": "37.4%",
+        "difficulty": "Medium",
+        "frequency": "43.5646%"
+    },
+    {
+        "id": 57,
+        "link": "https://leetcode.com/problems/cherry-pickup-ii",
+        "problem": "1463. Cherry Pickup II",
+        "acceptance": "70.8%",
+        "difficulty": "Hard",
+        "frequency": "43.4653%"
+    },
+    {
+        "id": 58,
+        "link": "https://leetcode.com/problems/minimum-cost-for-tickets",
+        "problem": "983. Minimum Cost For Tickets",
+        "acceptance": "63.9%",
+        "difficulty": "Medium",
+        "frequency": "43.3791%"
+    },
+    {
+        "id": 59,
+        "link": "https://leetcode.com/problems/number-of-distinct-islands",
+        "problem": "694. Number of Distinct Islands",
+        "acceptance": "59.5%",
+        "difficulty": "Medium",
+        "frequency": "43.3241%"
+    },
+    {
+        "id": 60,
+        "link": "https://leetcode.com/problems/employees-earning-more-than-their-managers",
+        "problem": "181. Employees Earning More Than Their Managers",
+        "acceptance": "66.0%",
+        "difficulty": "Easy",
+        "frequency": "43.1791%"
+    },
+    {
+        "id": 61,
+        "link": "https://leetcode.com/problems/maximum-population-year",
+        "problem": "1854. Maximum Population Year",
+        "acceptance": "58.6%",
+        "difficulty": "Easy",
+        "frequency": "43.1687%"
+    },
+    {
+        "id": 62,
+        "link": "https://leetcode.com/problems/find-the-closest-palindrome",
+        "problem": "564. Find the Closest Palindrome",
+        "acceptance": "21.2%",
+        "difficulty": "Hard",
+        "frequency": "43.1483%"
+    },
+    {
+        "id": 63,
+        "link": "https://leetcode.com/problems/minimum-path-sum",
+        "problem": "64. Minimum Path Sum",
+        "acceptance": "59.1%",
+        "difficulty": "Medium",
+        "frequency": "43.0245%"
+    },
+    {
+        "id": 64,
+        "link": "https://leetcode.com/problems/adding-two-negabinary-numbers",
+        "problem": "1073. Adding Two Negabinary Numbers",
+        "acceptance": "35.8%",
+        "difficulty": "Medium",
+        "frequency": "42.9954%"
+    },
+    {
+        "id": 65,
+        "link": "https://leetcode.com/problems/number-of-orders-in-the-backlog",
+        "problem": "1801. Number of Orders in the Backlog",
+        "acceptance": "45.7%",
+        "difficulty": "Medium",
+        "frequency": "42.9472%"
+    },
+    {
+        "id": 66,
+        "link": "https://leetcode.com/problems/check-if-an-original-string-exists-given-two-encoded-strings",
+        "problem": "2060. Check if an Original String Exists Given Two Encoded Strings",
+        "acceptance": "39.9%",
+        "difficulty": "Hard",
+        "frequency": "42.8617%"
+    },
+    {
+        "id": 67,
+        "link": "https://leetcode.com/problems/pour-water",
+        "problem": "755. Pour Water",
+        "acceptance": "45.5%",
+        "difficulty": "Medium",
+        "frequency": "42.8447%"
+    },
+    {
+        "id": 68,
+        "link": "https://leetcode.com/problems/divide-two-integers",
+        "problem": "29. Divide Two Integers",
+        "acceptance": "17.0%",
+        "difficulty": "Medium",
+        "frequency": "42.776%"
+    },
+    {
+        "id": 69,
+        "link": "https://leetcode.com/problems/range-module",
+        "problem": "715. Range Module",
+        "acceptance": "43.4%",
+        "difficulty": "Hard",
+        "frequency": "42.7607%"
+    },
+    {
+        "id": 70,
+        "link": "https://leetcode.com/problems/count-number-of-nice-subarrays",
+        "problem": "1248. Count Number of Nice Subarrays",
+        "acceptance": "58.4%",
+        "difficulty": "Medium",
+        "frequency": "42.437%"
+    },
+    {
+        "id": 71,
+        "link": "https://leetcode.com/problems/reverse-linked-list-ii",
+        "problem": "92. Reverse Linked List II",
+        "acceptance": "43.2%",
+        "difficulty": "Medium",
+        "frequency": "42.2978%"
+    },
+    {
+        "id": 72,
+        "link": "https://leetcode.com/problems/swap-nodes-in-pairs",
+        "problem": "24. Swap Nodes in Pairs",
+        "acceptance": "58.4%",
+        "difficulty": "Medium",
+        "frequency": "42.2732%"
+    },
+    {
+        "id": 73,
+        "link": "https://leetcode.com/problems/reverse-string",
+        "problem": "344. Reverse String",
+        "acceptance": "74.0%",
+        "difficulty": "Easy",
+        "frequency": "42.2681%"
+    },
+    {
+        "id": 74,
+        "link": "https://leetcode.com/problems/minimum-time-difference",
+        "problem": "539. Minimum Time Difference",
+        "acceptance": "54.4%",
+        "difficulty": "Medium",
+        "frequency": "42.2089%"
+    },
+    {
+        "id": 75,
+        "link": "https://leetcode.com/problems/symmetric-tree",
+        "problem": "101. Symmetric Tree",
+        "acceptance": "51.4%",
+        "difficulty": "Easy",
+        "frequency": "42.1957%"
+    },
+    {
+        "id": 76,
+        "link": "https://leetcode.com/problems/contain-virus",
+        "problem": "749. Contain Virus",
+        "acceptance": "49.9%",
+        "difficulty": "Hard",
+        "frequency": "42.037%"
+    },
+    {
+        "id": 77,
+        "link": "https://leetcode.com/problems/find-the-shortest-superstring",
+        "problem": "943. Find the Shortest Superstring",
+        "acceptance": "45.4%",
+        "difficulty": "Hard",
+        "frequency": "41.9538%"
+    },
+    {
+        "id": 78,
+        "link": "https://leetcode.com/problems/number-of-ways-to-split-a-string",
+        "problem": "1573. Number of Ways to Split a String",
+        "acceptance": "32.0%",
+        "difficulty": "Medium",
+        "frequency": "41.7405%"
+    },
+    {
+        "id": 79,
+        "link": "https://leetcode.com/problems/number-of-music-playlists",
+        "problem": "920. Number of Music Playlists",
+        "acceptance": "49.4%",
+        "difficulty": "Hard",
+        "frequency": "41.68%"
+    },
+    {
+        "id": 80,
+        "link": "https://leetcode.com/problems/beautiful-arrangement",
+        "problem": "526. Beautiful Arrangement",
+        "acceptance": "64.3%",
+        "difficulty": "Medium",
+        "frequency": "41.5735%"
+    },
+    {
+        "id": 81,
+        "link": "https://leetcode.com/problems/numbers-at-most-n-given-digit-set",
+        "problem": "902. Numbers At Most N Given Digit Set",
+        "acceptance": "40.8%",
+        "difficulty": "Hard",
+        "frequency": "41.5163%"
+    },
+    {
+        "id": 82,
+        "link": "https://leetcode.com/problems/closest-binary-search-tree-value-ii",
+        "problem": "272. Closest Binary Search Tree Value II",
+        "acceptance": "56.5%",
+        "difficulty": "Hard",
+        "frequency": "41.4849%"
+    },
+    {
+        "id": 83,
+        "link": "https://leetcode.com/problems/add-digits",
+        "problem": "258. Add Digits",
+        "acceptance": "62.3%",
+        "difficulty": "Easy",
+        "frequency": "41.4252%"
+    },
+    {
+        "id": 84,
+        "link": "https://leetcode.com/problems/unique-paths-iii",
+        "problem": "980. Unique Paths III",
+        "acceptance": "79.4%",
+        "difficulty": "Hard",
+        "frequency": "41.4158%"
+    },
+    {
+        "id": 85,
+        "link": "https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters",
+        "problem": "1239. Maximum Length of a Concatenated String with Unique Characters",
+        "acceptance": "50.6%",
+        "difficulty": "Medium",
+        "frequency": "41.3159%"
+    },
+    {
+        "id": 86,
+        "link": "https://leetcode.com/problems/substring-with-concatenation-of-all-words",
+        "problem": "30. Substring with Concatenation of All Words",
+        "acceptance": "27.9%",
+        "difficulty": "Hard",
+        "frequency": "41.2105%"
+    },
+    {
+        "id": 87,
+        "link": "https://leetcode.com/problems/stream-of-characters",
+        "problem": "1032. Stream of Characters",
+        "acceptance": "51.3%",
+        "difficulty": "Hard",
+        "frequency": "41.1909%"
+    },
+    {
+        "id": 88,
+        "link": "https://leetcode.com/problems/candy",
+        "problem": "135. Candy",
+        "acceptance": "36.8%",
+        "difficulty": "Hard",
+        "frequency": "41.0291%"
+    },
+    {
+        "id": 89,
+        "link": "https://leetcode.com/problems/rectangle-overlap",
+        "problem": "836. Rectangle Overlap",
+        "acceptance": "43.2%",
+        "difficulty": "Easy",
+        "frequency": "41.0022%"
+    },
+    {
+        "id": 90,
+        "link": "https://leetcode.com/problems/number-of-valid-words-for-each-puzzle",
+        "problem": "1178. Number of Valid Words for Each Puzzle",
+        "acceptance": "46.9%",
+        "difficulty": "Hard",
+        "frequency": "40.9932%"
+    },
+    {
+        "id": 91,
+        "link": "https://leetcode.com/problems/sort-array-by-increasing-frequency",
+        "problem": "1636. Sort Array by Increasing Frequency",
+        "acceptance": "68.3%",
+        "difficulty": "Easy",
+        "frequency": "40.9928%"
+    },
+    {
+        "id": 92,
+        "link": "https://leetcode.com/problems/number-of-distinct-substrings-in-a-string",
+        "problem": "1698. Number of Distinct Substrings in a String",
+        "acceptance": "62.4%",
+        "difficulty": "Medium",
+        "frequency": "40.9849%"
+    },
+    {
+        "id": 93,
+        "link": "https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists",
+        "problem": "632. Smallest Range Covering Elements from K Lists",
+        "acceptance": "58.2%",
+        "difficulty": "Hard",
+        "frequency": "40.7656%"
+    },
+    {
+        "id": 94,
+        "link": "https://leetcode.com/problems/sort-an-array",
+        "problem": "912. Sort an Array",
+        "acceptance": "61.6%",
+        "difficulty": "Medium",
+        "frequency": "40.7064%"
+    },
+    {
+        "id": 95,
+        "link": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards",
+        "problem": "1423. Maximum Points You Can Obtain from Cards",
+        "acceptance": "50.0%",
+        "difficulty": "Medium",
+        "frequency": "40.7058%"
+    },
+    {
+        "id": 96,
+        "link": "https://leetcode.com/problems/valid-square",
+        "problem": "593. Valid Square",
+        "acceptance": "43.8%",
+        "difficulty": "Medium",
+        "frequency": "40.6684%"
+    },
+    {
+        "id": 97,
+        "link": "https://leetcode.com/problems/surrounded-regions",
+        "problem": "130. Surrounded Regions",
+        "acceptance": "33.7%",
+        "difficulty": "Medium",
+        "frequency": "40.6545%"
+    },
+    {
+        "id": 98,
+        "link": "https://leetcode.com/problems/max-chunks-to-make-sorted",
+        "problem": "769. Max Chunks To Make Sorted",
+        "acceptance": "57.6%",
+        "difficulty": "Medium",
+        "frequency": "40.6456%"
+    },
+    {
+        "id": 99,
+        "link": "https://leetcode.com/problems/tag-validator",
+        "problem": "591. Tag Validator",
+        "acceptance": "36.3%",
+        "difficulty": "Hard",
+        "frequency": "40.6096%"
+    },
+    {
+        "id": 100,
+        "link": "https://leetcode.com/problems/validate-ip-address",
+        "problem": "468. Validate IP Address",
+        "acceptance": "26.2%",
+        "difficulty": "Medium",
+        "frequency": "40.5623%"
+    }
+]
